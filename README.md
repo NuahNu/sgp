@@ -1,6 +1,6 @@
-# 게임 컨셉: High Concept 및 핵심 메카닉
-모바일게임 Event Horizon Space Shooting과 PC게임 FTL: Faster Than Light를 적절히 섞을 게임.\
-플레이어는 전투 시작 전 무기를 개조할 수 있다.\
+# 게임 컨셉
+모바일게임 Event Horizon Space Shooting과 PC게임 FTL: Faster Than Light를 섞은 게임.\
+플레이어는 사용할 무기를 개조할 수 있다.\
 전투를 시작하면 플레이어는 자신의 비행기를 조종해 적을 격파한다.\
 https://play.google.com/store/apps/details?id=com.ZipasGames.Frontier&pli=1
 https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/
