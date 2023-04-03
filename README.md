@@ -1,21 +1,19 @@
 # 게임 컨셉
-모바일게임 Event Horizon Space Shooting과 PC게임 FTL: Faster Than Light를 섞은 게임.\
+모바일게임 [Event Horizon Space Shooting](https://play.google.com/store/apps/details?id=com.ZipasGames.Frontier&pli=1)과 PC게임 [FTL: Faster Than Light](https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/)를 섞은 2D 슈팅게임.\
 플레이어는 사용할 무기를 개조할 수 있다.\
-전투를 시작하면 플레이어는 자신의 비행기를 조종해 적을 격파한다.\
-https://play.google.com/store/apps/details?id=com.ZipasGames.Frontier&pli=1
-https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/
+전투를 시작하면 플레이어는 자신의 비행기를 조종해 적을 격파한다.
 
 # 개발 범위
 3개 이상의 비행기\
-3개 이상의 무기종류(탄, 미사일, 레이저 등)\
-2가지 이상의 [AI패턴](#ai패턴)([배회](#배회), [간격 벌리기](#간격-벌리기), [요격](#요격) 등)
+3개 이상의 [무기종류](#무기종류) ([탄](#탄), [미사일](#미사일), [레이저](#레이저) 등)\
+2가지 이상의 [AI패턴](#ai패턴) ([간격 벌리기](#간격-벌리기), [요격](#요격) 등)
 
 # 예상 게임 실행 흐름
 1. 어플 실행시 Touch to Play
 2. 사용할 무기를 선택 및 개조\
 ![FTL_무기UI](https://user-images.githubusercontent.com/104414203/229501925-e582c354-d8e0-44d4-9bb2-cc35be1052cc.png)
 3. 적과 전투\
-![image](https://user-images.githubusercontent.com/104414203/229502390-a05f712f-49d4-4bc9-ac37-fc98bd7a44e1.png)
+![Event_Horizon](https://user-images.githubusercontent.com/104414203/229504605-9e8ba9f9-7ec4-42b9-874e-9c655e402c55.png)
 4. 2, 3을 반복.
  
 # 개발 일정
@@ -30,14 +28,26 @@ https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/
 9주 : 게임답도록 수정.
 
 # 발표 동영상링크
+링크
 
+> # 무기종류
+> ## 탄
+> 작동 시 직진하는 투사체를 발사.\
+> 쿨타임이 중간\
+> 사정거리 중간
+> ## 미사일
+> 작동 시 가까운 적을 향해 나아가는 투사체를 발사.\
+> 쿨타임 긺\
+> 사정거리 긺
+> ## 레이저
+> 작동 시 일정 거리내의 적을 지속공격.\
+> 쿨타임과 지속시간이 같음.\
+> 사정거리 짧음
 
-
-
-# AI패턴
-## 배회
-유저와 상관없이 위치함.
-## 간격 벌리기
-일정 거리를 유지하며 공격.
-## 요격
-직선으로 접근해 공격하고 도망을 반복.
+> # AI패턴
+> ## 간격 벌리기
+> 일정 거리를 유지하며 공격. (주로 무기 사거리)\
+> 주로 사정거리가 긴 무기
+> ## 요격
+> 직선으로 접근해 공격하고 도망을 반복.\
+> 주로 강한 한방을 지닌 무기
