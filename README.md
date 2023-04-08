@@ -1,5 +1,5 @@
 # 게임 컨셉
-모바일게임 [Event Horizon Space Shooting](https://play.google.com/store/apps/details?id=com.ZipasGames.Frontier&pli=1)과 PC게임 [FTL: Faster Than Light](https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/)를 섞은 2D 슈팅게임.\
+[Event Horizon](https://store.steampowered.com/app/465000/Event_Horizon/)과 [FTL: Faster Than Light](https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/)를 섞은 2D 슈팅게임.\
 플레이어는 사용할 무기를 개조할 수 있다.\
 전투를 시작하면 플레이어는 자신의 비행기를 조종해 적을 격파한다.
 
