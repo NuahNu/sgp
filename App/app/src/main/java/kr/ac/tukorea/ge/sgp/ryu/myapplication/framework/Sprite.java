@@ -9,8 +9,10 @@ public class Sprite implements IGameObject {
     protected RectF dstRect = new RectF();
     protected float x, y, width, height;
     public Sprite(int bitmapResId, float cx, float cy, float width, float height) {
+        // 위치
         this.x = cx;
         this.y = cy;
+        // 크기
         this.width = width;
         this.height = height;
         if (bitmapResId != 0) {
