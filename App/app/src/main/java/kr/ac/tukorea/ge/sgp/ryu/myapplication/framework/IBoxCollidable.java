@@ -4,4 +4,5 @@ import android.graphics.RectF;
 
 public interface IBoxCollidable {
     public RectF getCollisionRect();
+    public float getRadian(); // int인가?
 }

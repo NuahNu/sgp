@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.BuildConfig;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Ship;
 
 public class BaseScene {
     private static ArrayList<BaseScene> stack = new ArrayList<>();
@@ -72,9 +73,17 @@ public class BaseScene {
                 bboxPaint.setColor(Color.RED);
             }
             for (IGameObject gobj : objects) {
-                if (gobj instanceof IBoxCollidable) {
-                    RectF rect = ((IBoxCollidable) gobj).getCollisionRect();
+                if (gobj instanceof Ship) {
+                    Ship tmp = ((Ship) gobj);
+                    RectF rect = tmp.getCollisionRect();
+                    float x = tmp.x;
+                    float y = tmp.y;
+                    float radian = tmp.getRadian();
+
+                    canvas.save();
+                    canvas.rotate((float) Math.toDegrees( radian), x, y);
                     canvas.drawRect(rect, bboxPaint);
+                    canvas.restore();
                 }
             }
         }
