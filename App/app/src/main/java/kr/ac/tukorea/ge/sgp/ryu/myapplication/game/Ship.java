@@ -22,16 +22,10 @@ public class Ship extends Sprite implements IBoxCollidable {
     protected RectF collisionRect = new RectF();
     private float radian;
 
-    public Ship() {
-        super(R.mipmap.kestrel_cruiser, FIGHTER_X, FIGHTER_Y, FIGHTER_WIDTH, FIGHTER_HEIGHT);
+    public Ship(float _x, float _y) {
+        super(R.mipmap.kestrel_cruiser, _x, _y, FIGHTER_WIDTH, FIGHTER_HEIGHT);
 
         Random r = new Random();
-
-        // 이건 임시
-        this.x = r.nextFloat() * 6.0f;
-        this.y = r.nextFloat() * 6.0f;
-        fixDstRect();
-        //
 
         this.dx = r.nextFloat() * 1.0f;
         this.dy = r.nextFloat() * 1.0f;

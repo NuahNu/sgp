@@ -14,9 +14,9 @@ public class MainScene extends BaseScene {
 
     public MainScene(){
 
-        player = new Ship();
+        player = new Ship(1,1);
         add(player);
-        add(new Ship());
+        add(new Ship(1,4.5f));
     }
 
     @Override
