@@ -28,16 +28,16 @@ public class MainScene extends BaseScene {
 
     private void checkCollision() {
         for (IGameObject o1 : objects) {
-            if (!(o1 instanceof Ship)) {
+            if (!(o1 instanceof PhysicalObject)) {
                 continue;
             }
-            Ship enemy = (Ship) o1;
+            PhysicalObject enemy = (PhysicalObject) o1;
 //            boolean removed = false;
             for (IGameObject o2 : objects) {
-                if (!(o2 instanceof Ship)) {
+                if (!(o2 instanceof PhysicalObject)) {
                     continue;
                 }
-                Ship bullet = (Ship) o2;
+                PhysicalObject bullet = (PhysicalObject) o2;
                 if (enemy != bullet && CollisionHelper.OBB(enemy, bullet)) {
                     Log.d(TAG, "Collision !!");
 //                    remove(bullet);

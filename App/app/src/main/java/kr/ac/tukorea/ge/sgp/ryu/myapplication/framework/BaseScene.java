@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.BuildConfig;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Ship;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
 
 public class BaseScene {
     private static ArrayList<BaseScene> stack = new ArrayList<>();
@@ -73,8 +73,8 @@ public class BaseScene {
                 bboxPaint.setColor(Color.RED);
             }
             for (IGameObject gobj : objects) {
-                if (gobj instanceof Ship) {
-                    Ship tmp = ((Ship) gobj);
+                if (gobj instanceof PhysicalObject) {
+                    PhysicalObject tmp = ((PhysicalObject) gobj);
                     RectF rect = tmp.getCollisionRect();
                     float x = tmp.x;
                     float y = tmp.y;

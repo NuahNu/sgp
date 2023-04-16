@@ -1,18 +1,14 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
-import android.graphics.Canvas;
-import android.graphics.RectF;
-
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 
-public class Kestrel_0 extends Ship{
+public class Kestrel_0 extends Ship {
     public Kestrel_0(float cx, float cy) {
         super(R.mipmap.kestrel, cx, cy, 598/200, 364/200);
 
         maxSpeed = 5;
-        shipMass = 1;
+        mass = 1;
         enginePower = 5;
-        renewalStatus();
     }
 
     @Override
