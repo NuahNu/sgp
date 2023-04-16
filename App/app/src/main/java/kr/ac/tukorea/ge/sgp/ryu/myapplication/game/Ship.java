@@ -13,19 +13,19 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Sprite;
 
 public class Ship extends Sprite implements IBoxCollidable {
     protected RectF collisionRect = new RectF();
-    private float radian;           // 각
-    private float mass;             // 질량의 총 합. 보통 계산은 이걸 이용.
-    private float shipMass;         // 함선의 질량. 함선별로 달라야 함.
-    private float enginePower;      // 엔진의 세기. 함선별로 달라야 함.
-    private Vector2D speed;         // 속도.
-    private float maxSpeed;         // 최대속도. 함선별로 달라야 함.
-    private final float LIMIT_RATE = 0.8f;   // 플레이어가 조작하지 않을 때 최고 속도 비율
-    private final float DECELERATION_TIME = 1f;   // 감속에 걸리는 시간.
-    private Vector2D acceleration;  // 가속도
-    private float turnRate;         // 선회율
+    protected float radian;           // 각
+    protected float mass;             // 질량의 총 합. 보통 계산은 이걸 이용.
+    protected float shipMass;         // 함선의 질량. 함선별로 달라야 함.
+    protected float enginePower;      // 엔진의 세기. 함선별로 달라야 함.
+    protected Vector2D speed = new Vector2D(0,0);         // 속도.
+    protected float maxSpeed;         // 최대속도. 함선별로 달라야 함.
+    protected final float LIMIT_RATE = 0.8f;   // 플레이어가 조작하지 않을 때 최고 속도 비율
+    protected final float DECELERATION_RATE = 1.5f;   // 감속 가속도 배율. 1보다 커야함. 1이면 충격에 따라...
+    protected Vector2D acceleration = new Vector2D(0,0);  // 가속도
+    protected float turnRate;         // 선회율
                                     // 크기 - Sptrite에 Rect,width, height
-    private ArrayList<Weapon> weaponList;      // 무기 배열
-    private ArrayList<Facility> facilityList;  // 시설 배열
+    protected ArrayList<Weapon> weaponList = new ArrayList<>();      // 무기 배열
+    protected ArrayList<Facility> facilityList = new ArrayList<>();  // 시설 배열
 
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
@@ -34,11 +34,11 @@ public class Ship extends Sprite implements IBoxCollidable {
         radian = 0;
     }
 
-    private void initWeapon() {}
+    protected void initWeapon() {}
 
-    private void initFacility() {}
+    protected void initFacility() {}
 
-    private final void renewalStatus(){
+    protected final void renewalStatus(){       // protected or private
         // 질량 갱신
         mass = shipMass;
         for(Weapon w : weaponList)
@@ -56,49 +56,54 @@ public class Ship extends Sprite implements IBoxCollidable {
     @Override
     public void update() {
         super.update();
-        acceleration.set(0, 0); //
-        fixCollisionRect();
+        acceleration.set(0, 0); // 터치 이벤트에 반응해서 초기화해야함.
         UpdateAcceleration();
         UpdateSpeed();
         UpdateLocation();
+        fixDstRect();           // 위치 갱신
+        fixCollisionRect();     // 충돌박스 갱신. dstRect를 기반으로 하므로 먼저 불려야함.
     }
 
     private void UpdateLocation() {
-        Vector2D delta = speed;
+        Vector2D delta = new Vector2D(speed);
         delta.multiply(frameTime);
         x += delta.x;
         y += delta.y;
     }
 
     private void UpdateSpeed() {
-        Vector2D delta = acceleration;
+        Vector2D delta = new Vector2D(acceleration);
+        float limit;
 
         // 엔진을 사용중일때
         if(delta.getLength() > 0){
             // 속도 변화량 적용.
             delta.multiply(frameTime);
             speed.add(delta);
-            // 최대속도보다 높으면
-            if(speed.getLength() > maxSpeed) {
-                delta = speed;
-                delta.multiply(-(speed.getLength() - maxSpeed) / DECELERATION_TIME);
-            }
+
+            limit = maxSpeed;
         }
         // 아닐때
         else {
-            // LIMIT_RATE 보다 높으면
-            if(speed.getLength() > maxSpeed * LIMIT_RATE) {
-                delta = speed;
-                delta.multiply(-(speed.getLength() - maxSpeed * LIMIT_RATE) / DECELERATION_TIME);   // 버그 있으면 일단 -0.2로
+            limit = maxSpeed * LIMIT_RATE;
+        }
+        // 감속
+        if(speed.getLength() > limit) { // 속도제한보다 크면
+            delta = new Vector2D(speed);
+            delta.multiply(-(enginePower / mass) / delta.getLength() * DECELERATION_RATE);
+            delta.multiply(frameTime);
+            speed.add(delta);
+            if(speed.getLength() < limit){ // 더 낮아지면 안된다.
+                speed.multiply(limit/speed.getLength());
             }
         }
-        delta.multiply(frameTime);
-        speed.add(delta);
+//        System.out.println("3. speed : " + speed);
     }
 
     private void UpdateAcceleration() {
         // 키 입력에 따라 각도가 달라짐.
-        if(false) {
+        // 그냥 getImpulse로 구현 가능할지도?
+        if(true) {
             // 해당 동작이 있으면
             acceleration.x = (enginePower / mass) * Math.cos(radian);
             acceleration.y = (enginePower / mass) * Math.sin(radian);

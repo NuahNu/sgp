@@ -12,6 +12,7 @@ public class Weapon extends AnimSprite {
 
     public Weapon(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount) {
         super(bitmapResId, cx, cy, width, height, fps, frameCount);
+        mass = 0;
     }
 
 

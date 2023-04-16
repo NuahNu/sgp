@@ -2,15 +2,22 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IGameObject;
 
 public class MainScene extends BaseScene {
 
     private static final String TAG = MainScene.class.getSimpleName();
+    private final PlayerData playerData = new PlayerData();
 
     public MainScene(){
 
+        ArrayList<Ship> shipList = playerData.getShips();
+
+        Ship tmp = shipList.get(0);
+        objects.add(tmp);
     }
 
     @Override
