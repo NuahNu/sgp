@@ -55,7 +55,6 @@ public class Ship extends PhysicalObject{
         Vector2D tmp = new Vector2D();
         tmp.x = (enginePower / mass) * Math.cos(radian);
         tmp.y = (enginePower / mass) * Math.sin(radian);
-        tmp.multiply(frameTime);
         addImpulse(tmp);
     }
 

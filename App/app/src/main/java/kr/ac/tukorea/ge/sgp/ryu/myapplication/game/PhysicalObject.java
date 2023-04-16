@@ -76,9 +76,13 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
 //        }
 //    }
 
-    public void addImpulse(Vector2D input){
+    public void addImpulse(Vector2D impulse){
+        impulse.multiply(frameTime);  // 버그나면 이게 문제
+        // 한번만 부르면 속도가 증가.
+        // update()마다 부르면 가속.
+
         speed.multiply(mass);
-        speed.add(input);
+        speed.add(impulse);
         speed.multiply(1/ mass);
     }
 
