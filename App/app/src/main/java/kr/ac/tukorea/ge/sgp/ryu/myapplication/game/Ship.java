@@ -56,7 +56,6 @@ public class Ship extends Sprite implements IBoxCollidable {
     @Override
     public void update() {
         super.update();
-        acceleration.set(0, 0); // 터치 이벤트에 반응해서 초기화해야함.
         UpdateAcceleration();
         UpdateSpeed();
         UpdateLocation();
@@ -103,6 +102,7 @@ public class Ship extends Sprite implements IBoxCollidable {
     private void UpdateAcceleration() {
         // 키 입력에 따라 각도가 달라짐.
         // 그냥 getImpulse로 구현 가능할지도?
+        acceleration.set(0, 0); // 터치 이벤트에 반응해서 초기화해야함.
         if(true) {
             // 해당 동작이 있으면
             acceleration.x = (enginePower / mass) * Math.cos(radian);
@@ -111,10 +111,16 @@ public class Ship extends Sprite implements IBoxCollidable {
         // test code
     }
 
-    public void getImpulse(Vector2D input){
+    public void addImpulse(Vector2D input){
         speed.multiply(mass);
         speed.add(input);
         speed.multiply(1/mass);
+    }
+
+    public Vector2D getImpulse(){
+        Vector2D value = new Vector2D(speed);
+        value.multiply(mass);
+        return value;
     }
 
     @Override
