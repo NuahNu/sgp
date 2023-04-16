@@ -4,70 +4,59 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
-import java.util.Random;
-
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IBoxCollidable;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Metrics;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Sprite;
 
 public class Ship extends Sprite implements IBoxCollidable {
-
-    private static final float FIGHTER_X = 4.5f;
-    private static final float FIGHTER_Y = 14.8f;
-    private static final float FIGHTER_WIDTH = 3f;
-    private static final float FIGHTER_HEIGHT = 3f;
-    private float dx, dy;
     protected RectF collisionRect = new RectF();
-    private float radian;
+    private float radian;           // 각
+    private float mass;             // 질량
+    private Vector2D speed;         // 속도
+    private Vector2D acceleration;  // 가속도
+    private float turnRate;         // 선회율
+                                    // 크기 - Sptrite에 Rect,width, height
+    private Weapon WeaponList;      // 무기 배열
+    private Facility FacilityList;  // 시설 배열
 
-    public Ship(float _x, float _y) {
-        super(R.mipmap.kestrel_cruiser, _x, _y, FIGHTER_WIDTH, FIGHTER_HEIGHT);
+    public Ship(int bitmapResId, float cx, float cy, float width, float height) {
+        super(bitmapResId, cx, cy, width, height);
+        initWeapon();
+        initFacility();
+    }
 
-        Random r = new Random();
+    private void initWeapon() {
 
-        this.dx = r.nextFloat() * 1.0f;
-        this.dy = r.nextFloat() * 1.0f;
+    }
+
+    private void initFacility() {
+
+    }
+
+    protected void fixCollisionRect() {
+        collisionRect.set(dstRect);
     }
 
     @Override
     public void update() {
         super.update();
+        fixCollisionRect();
+        UpdateAcceleration();
+        UpdateSpeed();
+    }
 
-        collisionRect.set(dstRect);
+    private void UpdateSpeed() {
 
-        radian += 0.25f * Math.PI* BaseScene.frameTime;
+    }
 
-        //dstRect.offset(dx * BaseScene.frameTime, dy * BaseScene.frameTime);
-        if (dx > 0) {
-            if (dstRect.right > Metrics.game_width) {
-                dx = -dx;
-            }
-        } else {
-            if (dstRect.left < 0) {
-                dx = -dx;
-            }
-        }
-        if (dy > 0) {
-            if (dstRect.bottom > Metrics.game_height) {
-                dy = -dy;
-            }
-        } else {
-            if (dstRect.top < 0) {
-                dy = -dy;
-            }
-        }
-        x = (dstRect.left+ dstRect.right) /2;
-        y = (dstRect.top+ dstRect.bottom) /2;
+    private void UpdateAcceleration() {
+
     }
 
     @Override
     public void draw(Canvas canvas) {
-//        super.draw(canvas);
         canvas.save();
         canvas.rotate((float) Math.toDegrees( radian), x, y);
-        canvas.drawBitmap(bitmap, null, dstRect, null);
+        super.draw(canvas);
         canvas.restore();
     }
 

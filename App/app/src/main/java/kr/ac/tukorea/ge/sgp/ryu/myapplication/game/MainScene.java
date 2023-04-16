@@ -2,21 +2,15 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
 import android.util.Log;
 
-import java.util.Random;
-
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IGameObject;
 
 public class MainScene extends BaseScene {
 
     private static final String TAG = MainScene.class.getSimpleName();
-    private final Ship player;
 
     public MainScene(){
 
-        player = new Ship(1,1);
-        add(player);
-        add(new Ship(1,4.5f));
     }
 
     @Override
