@@ -77,9 +77,9 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
 //    }
 
     public void addImpulse(Vector2D impulse){
-        impulse.multiply(frameTime);  // 버그나면 이게 문제
-        // 한번만 부르면 속도가 증가.
-        // update()마다 부르면 가속.
+//        impulse.multiply(frameTime);  // 버그나면 이게 문제
+//        생각해보니 위치 갱신에서 speed에 frameTime을 곱하니까
+//        그냥 더하는게 맞는듯
 
         speed.multiply(mass);
         speed.add(impulse);

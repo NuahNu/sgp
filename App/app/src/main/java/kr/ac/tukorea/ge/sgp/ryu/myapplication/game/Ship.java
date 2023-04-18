@@ -55,6 +55,8 @@ public class Ship extends PhysicalObject{
         Vector2D tmp = new Vector2D();
         tmp.x = (enginePower / mass) * Math.cos(radian);
         tmp.y = (enginePower / mass) * Math.sin(radian);
+        // 얘는 가속이니까 frametime을 곱해야할듯?
+        tmp.multiply(frameTime);
         addImpulse(tmp);
     }
 
