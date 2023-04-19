@@ -31,6 +31,9 @@ public class Sprite implements IGameObject {
         dstRect.set(x - half_width, y - half_height, x + half_width, y + half_height);
     }
 
+    public  float getX(){return x;}
+    public  float getY(){return y;}
+
     @Override
     public void update() {
     }

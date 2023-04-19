@@ -10,7 +10,7 @@ public class PlayerData {
 
 
     public PlayerData(){
-        Ship tmp = new Kestrel_0(3, 3);
+        Ship tmp = new Kestrel_0(450, 800);
         shipList.add(tmp);
     }
     public ArrayList<Ship> getShips(){

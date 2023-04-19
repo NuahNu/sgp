@@ -4,8 +4,8 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 
 public class Kestrel_0 extends Ship {
     public Kestrel_0(float cx, float cy) {
-        super(R.mipmap.kestrel, cx, cy, 598/200, 364/200);
-
+        super(R.mipmap.kestrel, cx, cy, 598, 364);
+        // 기체 제원
         maxSpeed = 5;
         mass = 1;
         enginePower = 5;
@@ -13,6 +13,12 @@ public class Kestrel_0 extends Ship {
 
     @Override
     protected void initWeapon() {
+        weaponList.add(new Laser(this, true));
+        weaponList.add(new Laser(this, false));
+    }
+    protected void initWeaponLocation() {
+        weaponLocationList.add(new Vector2D(170,54));
+        weaponLocationList.add(new Vector2D(170,-54));
     }
 
     @Override
@@ -21,7 +27,6 @@ public class Kestrel_0 extends Ship {
 
 //    @Override
 //    public void update() {
-//        super.update();
 //    }
 //
 //    @Override
