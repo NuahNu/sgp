@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

@@ -1,9 +1,9 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.util;
 
 import android.graphics.RectF;
-import android.util.Log;
 
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IBoxCollidable;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 
 public class CollisionHelper {
     private static final String TAG = CollisionHelper.class.getSimpleName();

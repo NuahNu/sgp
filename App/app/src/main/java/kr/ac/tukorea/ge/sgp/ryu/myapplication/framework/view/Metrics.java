@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view;
 
 public class Metrics {
     public static float scale = 1.0f;

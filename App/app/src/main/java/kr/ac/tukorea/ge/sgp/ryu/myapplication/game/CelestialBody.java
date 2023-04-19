@@ -2,8 +2,8 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
 import android.graphics.RectF;
 
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IBoxCollidable;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 
 public class CelestialBody extends Sprite implements IBoxCollidable {
     protected float pullingForce;   // 중력. 이건 아마 행성에만 있을듯.

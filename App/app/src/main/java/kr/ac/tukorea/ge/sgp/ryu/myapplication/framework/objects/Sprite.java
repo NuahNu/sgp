@@ -1,8 +1,11 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.res.BitmapPool;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
 
 public class Sprite implements IGameObject {
     protected Bitmap bitmap;
@@ -26,6 +29,10 @@ public class Sprite implements IGameObject {
     }
 
     protected void fixDstRect() {
+        setSize(width, height);
+    }
+
+    protected void setSize(float width, float height) {
         float half_width = width / 2;
         float half_height = height / 2;
         dstRect.set(x - half_width, y - half_height, x + half_width, y + half_height);

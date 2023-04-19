@@ -1,15 +1,13 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
 
-import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene.frameTime;
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
-import java.util.ArrayList;
-
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.IBoxCollidable;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 
 public class PhysicalObject extends Sprite implements IBoxCollidable {
     protected RectF collisionRect = new RectF();

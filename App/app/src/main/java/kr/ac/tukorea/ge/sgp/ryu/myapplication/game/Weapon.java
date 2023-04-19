@@ -3,8 +3,8 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 
 public class Weapon extends Sprite{
     // 4/19 수업에서 사용한 방법을 적용

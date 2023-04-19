@@ -1,6 +1,6 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
-import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.BaseScene.frameTime;
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
 
 import android.graphics.Canvas;
 
@@ -52,6 +52,7 @@ public class Ship extends PhysicalObject{
         weaponArmLength = 0;
         //---------------------------
     }
+
     public void applyLimits(){
         maxSpeed *= LIMIT_RATE;
     }
@@ -59,6 +60,7 @@ public class Ship extends PhysicalObject{
         maxSpeed /= LIMIT_RATE;
     }
     public float getWeaponArmLength(){return weaponArmLength;}
+
     @Override
     public void update() {
         super.update();

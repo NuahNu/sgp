@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.BuildConfig;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 
 /**
  * TODO: document your custom view class.
