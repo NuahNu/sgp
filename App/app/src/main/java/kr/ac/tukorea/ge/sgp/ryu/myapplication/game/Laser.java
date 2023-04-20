@@ -29,10 +29,10 @@ public class Laser extends Weapon{
                 new Rect(  176, 0,   176 + 16, 60),
                 new Rect(  192, 0,   192 + 16, 60),// 7
         };
-
+        maxBulletStock = 3;
         isRightSide = is_rightSide;
         coolTime = 3;
-        firingTime = 1;
+        firingTime = 0.25f;
         reloadingSprite = 5;
         firingSprite = 7;
     }

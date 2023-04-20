@@ -13,7 +13,8 @@ public class Weapon extends Sprite{
 
     protected int projectileType; // 0 = 물리, 1 = 에너지 enum?
     protected static Rect srcRect = new Rect();
-
+    protected int maxBulletStock;          // 저장 가능한 탄환 수
+    protected int currentBulletStock;      // 현재 준비된(발사 가능한) 탄환 수
     protected boolean isFiring;
     protected float coolTime;           // 무기의 쿨타임
     protected float remainingTime;      // 남은 쿨타임
@@ -47,7 +48,8 @@ public class Weapon extends Sprite{
     
     public void fire(){
         if(!isFiring) {
-            if(remainingTime == coolTime){
+            if(currentBulletStock > 0){
+                currentBulletStock--;
                 isFiring = true;
                 remainingTime = 0;
                 // update한 위치에 발사체를 생성한다.
@@ -80,14 +82,17 @@ public class Weapon extends Sprite{
     private void selectRect() {
         int rectIndex;
         if(isFiring){
-            rectIndex = (int) ((remainingTime / firingTime) * (firingSprite)) + (reloadingSprite);
+            rectIndex = (int) ((remainingTime / firingTime) * (firingSprite - 1)) + (reloadingSprite);
         }
-        else{
-            rectIndex = (int) ((remainingTime / coolTime) * (reloadingSprite+1));
+        else{ // 충전 끝나면 색 바뀌라고 이렇게 해놨는데 아니다 싶으면 reloadingSprite-1
+            rectIndex = (int) ((remainingTime / coolTime) * (reloadingSprite));
         }
 //        if(!isRightSide){
 //            rectIndex = 11 - rectIndex;
 //        }
+        // 왜 버그가 나는지 모르겟네
+        if(rectIndex > reloadingSprite+firingSprite)
+            rectIndex = reloadingSprite+firingSprite-1;
 
         srcRect = rects[rectIndex];
     }
@@ -99,6 +104,7 @@ public class Weapon extends Sprite{
                 if(remainingTime > firingTime) {
                     isFiring = false;
                     remainingTime = 0;
+                    fire();
                 }
             }
         }
@@ -107,12 +113,27 @@ public class Weapon extends Sprite{
                 remainingTime += BaseScene.frameTime;
                 if(remainingTime > coolTime)
                 {
-                    remainingTime = coolTime;
-                    // test code
-                    fire();
+                    remainingTime -= coolTime;
+                    if(updateBulletStock()){
+                        remainingTime = coolTime;
+                        // test code
+                        fire();
+                        //-------
+                    }
                 }
             }
 //        System.out.println("remainingTime : " + remainingTime);
+    }
+
+    private boolean updateBulletStock() {
+        if(currentBulletStock < maxBulletStock){
+            currentBulletStock++;
+            System.out.println("currentBulletStock : " + currentBulletStock);
+        }
+        if (currentBulletStock == maxBulletStock) {
+            return true;
+        }
+        return false;
     }
 
     protected void fixDstRect() {
