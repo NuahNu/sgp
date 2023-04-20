@@ -1,10 +1,12 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Weapon extends Sprite{
     // 4/19 수업에서 사용한 방법을 적용
@@ -93,6 +95,7 @@ public class Weapon extends Sprite{
         // 왜 버그가 나는지 모르겟네
         if(rectIndex > reloadingSprite+firingSprite)
             rectIndex = reloadingSprite+firingSprite-1;
+        // -------------------
 
         srcRect = rects[rectIndex];
     }

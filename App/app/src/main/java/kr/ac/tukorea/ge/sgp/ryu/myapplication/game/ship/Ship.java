@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
 import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
 
@@ -6,7 +6,12 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 
-public class Ship extends PhysicalObject{
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility.Facility;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
+
+public class Ship extends PhysicalObject {
     protected float shipMass;         // 비행기만의 질량.
     protected float enginePower;      // 엔진의 세기.
     protected final float LIMIT_RATE = 0.8f;   // 플레이어가 조작하지 않을 때 최고 속도 비율

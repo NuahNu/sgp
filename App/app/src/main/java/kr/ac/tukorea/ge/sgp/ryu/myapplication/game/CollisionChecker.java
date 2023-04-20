@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.util.CollisionHelper;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 
 public class CollisionChecker implements IGameObject {

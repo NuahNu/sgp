@@ -1,8 +1,9 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon;
 
 import android.graphics.Rect;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Laser extends Weapon{
     private boolean isRightSide;

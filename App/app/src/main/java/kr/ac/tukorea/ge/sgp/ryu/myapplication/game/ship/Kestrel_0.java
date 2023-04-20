@@ -1,6 +1,8 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 
 public class Kestrel_0 extends Ship {
     public Kestrel_0(float cx, float cy) {

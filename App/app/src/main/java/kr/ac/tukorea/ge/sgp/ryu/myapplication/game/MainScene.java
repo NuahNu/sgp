@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class MainScene extends BaseScene {
     private static final String TAG = MainScene.class.getSimpleName();

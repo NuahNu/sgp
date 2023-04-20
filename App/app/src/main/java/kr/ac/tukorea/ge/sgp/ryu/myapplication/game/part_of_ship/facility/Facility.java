@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility;
 
 public class Facility {
     private float mass;

@@ -2,6 +2,9 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Kestrel_0;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
+
 public class PlayerData {
 
     private ArrayList<Ship> shipList= new ArrayList<> (); // 하나 이상 사용할 계획 없음.
