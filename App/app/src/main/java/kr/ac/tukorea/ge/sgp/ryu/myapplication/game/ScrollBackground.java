@@ -11,7 +11,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 public class ScrollBackground extends Sprite {
     private final PointF speed;
     private final float height;
-    private PointF scroll = null;
+    private PointF scroll = new PointF(0,0);
     public ScrollBackground(int bitmapResId, PointF speed) {
         super(bitmapResId, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height);
         this.height = bitmap.getHeight() * Metrics.game_width / bitmap.getWidth();
@@ -28,7 +28,7 @@ public class ScrollBackground extends Sprite {
 
     @Override
     public void draw(Canvas canvas) {
-        PointF curr = null;
+        PointF curr = new PointF(0,0);
         curr.x = scroll.x % width;
         curr.y = scroll.y % height;
         if (curr.x > 0) curr.x -= width;
@@ -40,4 +40,5 @@ public class ScrollBackground extends Sprite {
                 curr.y += height;
             }
         }
-    }}
+    }
+}
