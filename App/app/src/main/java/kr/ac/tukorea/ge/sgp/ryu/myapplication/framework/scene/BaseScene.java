@@ -14,6 +14,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidabl
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.projectile.Projectile;
 
 public class BaseScene {
     private static ArrayList<BaseScene> stack = new ArrayList<>();
@@ -126,6 +127,17 @@ public class BaseScene {
 //                    }
                     if (gobj instanceof PhysicalObject) {
                         PhysicalObject tmp = ((PhysicalObject) gobj);
+                        RectF rect = tmp.getCollisionRect();
+                        float x = tmp.getX();
+                        float y = tmp.getY();
+                        float radian = tmp.getRadian();
+
+                        canvas.save();
+                        canvas.rotate((float) Math.toDegrees(radian), x, y);
+                        canvas.drawRect(rect, bboxPaint);
+                        canvas.restore();
+                    } else if (gobj instanceof Projectile) {
+                        Projectile tmp = ((Projectile) gobj);
                         RectF rect = tmp.getCollisionRect();
                         float x = tmp.getX();
                         float y = tmp.getY();

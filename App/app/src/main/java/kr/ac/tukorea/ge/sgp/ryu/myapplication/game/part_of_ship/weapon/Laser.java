@@ -3,6 +3,9 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon;
 import android.graphics.Rect;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.projectile.Bullet;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Laser extends Weapon{
@@ -39,8 +42,12 @@ public class Laser extends Weapon{
     }
 
     @Override
-    public void update() {
+    protected void makeProjectile() {
+        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Bullet(R.mipmap.laser_heavy_strip4,x,y,owner));
+    }
 
+    @Override
+    public void update() {
         super.update();
     }
 }

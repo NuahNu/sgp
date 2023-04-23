@@ -55,10 +55,13 @@ public class Weapon extends Sprite{
                 isFiring = true;
                 remainingTime = 0;
                 // update한 위치에 발사체를 생성한다.
+                makeProjectile();
                 // 발사체 생성 위치를 따로 정해지 않았다면 이상하게 보일것.
             }
         }
     }
+
+    protected void makeProjectile() {}
 
     public void draw(Canvas canvas, Vector2D weaponLocation) {
         // update한 위치에 그린다.

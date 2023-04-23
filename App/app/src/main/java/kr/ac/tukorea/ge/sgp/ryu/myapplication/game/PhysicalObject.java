@@ -107,4 +107,8 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
     public float getRadian() {
         return radian;
     }
+
+    public Vector2D getSpeed() {
+        return speed;
+    }
 }
