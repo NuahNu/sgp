@@ -104,6 +104,7 @@ public class Ship extends PhysicalObject {
     }
     @Override
     public void draw(Canvas canvas) {
+        super.draw(canvas);
         int i = 0;
         Vector2D Vec2;
         for(Weapon w : weaponList)
@@ -117,6 +118,5 @@ public class Ship extends PhysicalObject {
             w.draw(canvas, Vec2);
             i++;
         }
-        super.draw(canvas);
     }
 }
