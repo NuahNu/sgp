@@ -10,7 +10,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 
 public class ScrollBackground extends Sprite {
     private final PointF speed;
-    private final float height;
+//    private final float height, width;
     private PointF scroll = new PointF(0,0);
     public ScrollBackground(int bitmapResId, PointF speed) {
         super(bitmapResId, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height);
@@ -37,8 +37,9 @@ public class ScrollBackground extends Sprite {
             while (curr.x < Metrics.game_width) {
                 dstRect.offsetTo(curr.x,curr.y);
                 super.draw(canvas);
-                curr.y += height;
+                curr.x += height;
             }
+            curr.y += height;
         }
     }
 }

@@ -1,9 +1,11 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
+import android.graphics.PointF;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
@@ -36,6 +38,7 @@ public class MainScene extends BaseScene {
         Ship tmp = shipList.get(0);
         add(Layer.ship, tmp);
         //----
+//        add(Layer.bg1, new ScrollBackground(R.mipmap.backgraound_20,new PointF(100,100)));
         add(Layer.controller, new CollisionChecker());
     }
 
