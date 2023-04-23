@@ -64,23 +64,27 @@ public class Weapon extends Sprite{
     protected void makeProjectile() {}
 
     public void draw(Canvas canvas, Vector2D weaponLocation) {
+        // 위치 조정
+        x = (float) (owner.getX() + Math.cos(owner.getRadian())*weaponLocation.x - Math.sin(owner.getRadian())*weaponLocation.y);
+        y = (float) (owner.getY()+ Math.sin(owner.getRadian())*weaponLocation.x + Math.cos(owner.getRadian())*weaponLocation.y);
+        fixDstRect();
+
         // update한 위치에 그린다.
         canvas.save();
         canvas.rotate((float) Math.toDegrees( Math.toRadians(90)), x, y);       // 비행기랑 무기랑 이미지 각도가 다름.
         canvas.rotate((float) Math.toDegrees( owner.getRadian()), x, y);
-        canvas.translate((float) weaponLocation.y, (float) -weaponLocation.x);  // 90도 회전 때문에 좌표계가 다름.
+//        canvas.translate((float) weaponLocation.y, (float) -weaponLocation.x);  // 90도 회전 때문에 좌표계가 다름.
         canvas.drawBitmap(bitmap, srcRect, dstRect, null);
         canvas.restore();
         // 이때 객체의 위치값은 이미지의 중하 에 해당.
     }
 
+
+
     public void update() {
         checkCoolTime();
         selectRect();
-        // owner의 위치에 weaponLocation을 더해 자신의 위치 갱신.?
-        x = owner.getX();
-        y = owner.getY();
-        fixDstRect();
+
         // 발사체를 생성하는 위치도 여기서 계사능ㄹ 할까?
     }
 
