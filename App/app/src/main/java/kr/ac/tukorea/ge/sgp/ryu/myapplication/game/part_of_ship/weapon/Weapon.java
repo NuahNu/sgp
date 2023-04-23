@@ -148,7 +148,7 @@ public class Weapon extends Sprite{
 
     protected void fixDstRect() {
         float half_width = width / 2;
-        dstRect.set(x - half_width, y - height, x + half_width, y);
+        dstRect.set(x - half_width, y, x + half_width, y + height);
     }
 
 }
