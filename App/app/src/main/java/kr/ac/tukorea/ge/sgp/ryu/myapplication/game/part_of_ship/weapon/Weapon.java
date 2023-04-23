@@ -56,17 +56,20 @@ public class Weapon extends Sprite{
                 remainingTime = 0;
                 // update한 위치에 발사체를 생성한다.
                 makeProjectile();
-                // 발사체 생성 위치를 따로 정해지 않았다면 이상하게 보일것.
             }
         }
+    }
+
+    public Ship getOwner() {
+        return owner;
     }
 
     protected void makeProjectile() {}
 
     public void draw(Canvas canvas, Vector2D weaponLocation) {
         // 위치 조정
-        x = (float) (owner.getX() + Math.cos(owner.getRadian())*weaponLocation.x - Math.sin(owner.getRadian())*weaponLocation.y);
-        y = (float) (owner.getY()+ Math.sin(owner.getRadian())*weaponLocation.x + Math.cos(owner.getRadian())*weaponLocation.y);
+        x = (float) (owner.getX() + Math.cos(owner.getRadian())*(weaponLocation.x+ height) - Math.sin(owner.getRadian())*weaponLocation.y);
+        y = (float) (owner.getY()+ Math.sin(owner.getRadian())*(weaponLocation.x+ height) + Math.cos(owner.getRadian())*weaponLocation.y);
         fixDstRect();
 
         // update한 위치에 그린다.

@@ -19,8 +19,8 @@ public class Kestrel_0 extends Ship {
         weaponList.add(new Laser(this, false));
     }
     protected void initWeaponLocation() {
-        weaponLocationList.add(new Vector2D(290,54));
-        weaponLocationList.add(new Vector2D(290,-54));
+        weaponLocationList.add(new Vector2D(120,54));
+        weaponLocationList.add(new Vector2D(120,-54));
     }
 
     @Override

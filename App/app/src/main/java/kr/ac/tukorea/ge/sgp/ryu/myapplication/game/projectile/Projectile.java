@@ -9,6 +9,7 @@ import android.graphics.RectF;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.AnimSprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Projectile extends AnimSprite implements IBoxCollidable {
@@ -24,9 +25,9 @@ public class Projectile extends AnimSprite implements IBoxCollidable {
     protected Vector2D speed = new Vector2D(0,0);         // 속도.
     protected float BULLET_SPEED;
 
-    public Projectile(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount, Ship owner) {
+    public Projectile(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount, Weapon owner) {
         super(bitmapResId, cx, cy, width, height, fps, frameCount);
-        radian = owner.getRadian();
+        radian = owner.getOwner().getRadian();
     }
 
     protected void setSpeed(Ship owner) {
