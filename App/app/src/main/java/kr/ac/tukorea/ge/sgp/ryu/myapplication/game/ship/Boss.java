@@ -1,15 +1,12 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
-import android.graphics.Canvas;
-
-import java.util.ArrayList;
-
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Beam;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Ion;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Laser;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Missile;
 
 public class Boss extends Ship {
     private int phase;
@@ -42,12 +39,16 @@ public class Boss extends Ship {
 
     @Override
     protected void initWeapon() {
-        weaponList.add(new Laser(this, true));
-        weaponList.add(new Laser(this, false));
+        weaponList.add(new Boss_Laser(this));
+        weaponList.add(new Boss_Ion(this));
+        weaponList.add(new Boss_Missile(this));
+        weaponList.add(new Boss_Beam(this));
     }
     protected void initWeaponLocation() {
-        weaponLocationList.add(new Vector2D(150,39));
-        weaponLocationList.add(new Vector2D(150,-39));
+        weaponLocationList.add(new Vector2D(91 - 14,177));
+        weaponLocationList.add(new Vector2D(91 - 14,-177));
+        weaponLocationList.add(new Vector2D(137 - 14,90));
+        weaponLocationList.add(new Vector2D(137 - 14,-90));
     }
 
     @Override
