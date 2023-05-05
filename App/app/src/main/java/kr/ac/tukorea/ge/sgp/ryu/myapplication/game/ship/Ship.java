@@ -62,8 +62,6 @@ public class Ship extends PhysicalObject {
         }
         // 최대 속도 갱신
         // 선회율 갱신
-        // PhysicalObject의 acceleration에 엔진 파워 적용.
-        acceleration = enginePower;
         // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
         weaponPowered = true;
         weaponArmLength = 0;

@@ -19,7 +19,8 @@ public class Kestrel_0 extends Ship {
         // 기체 제원
         maxSpeed = 5;
         mass = 1;
-        enginePower = 5;
+        // PhysicalObject의 acceleration에 엔진 파워 적용.
+        acceleration = enginePower = 5;
         name = String.valueOf(R.string.kestrel_0_name);
         className = String.valueOf(R.string.cruiser);
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,800,503);

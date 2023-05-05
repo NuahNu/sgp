@@ -18,6 +18,7 @@ public class Gib extends Ship {
         weaponPowered = false;
         // 랜덤 방향으로 발산.
         gibTurnRate = (float) (0.05 - Math.random()*0.1);
+        acceleration = 5;//??
     }
 
     public void setSpeed(Vector2D input) {
@@ -39,9 +40,8 @@ public class Gib extends Ship {
         super.update();
         radian+= gibTurnRate*frameTime;
         // 속도가 0이 되면 삭제.
-        if (speed.getLength() == 0){
+        if (speed.getLength() < 1){
             BaseScene.getTopScene().remove(MainScene.Layer.gib, this);
         }
-        System.out.println("speed"+speed);
     }
 }
