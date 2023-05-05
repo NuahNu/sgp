@@ -31,7 +31,7 @@ public class HP extends Sprite implements IGameObject {
     public void setHP(int hull, int shield){
         maxHull = currentHull = hull;
         maxShield = currentShield = shield;
-        setRecovery(hull / 10, shield / 10);
+        setRecovery(0, shield / 10);
     }
 
     public void setRecovery(int hull, int shield){
@@ -58,16 +58,20 @@ public class HP extends Sprite implements IGameObject {
         }
         if(currentHull < 0){
             currentHull = 0;
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
     public void update() {
         recovering();
         shieldPaint.setAlpha((int) (currentShield * 255 / maxShield));
+//        System.out.println("currentHull "+currentHull);
+        fixDstRect();
     }
+
+    public void setPos(float x, float y){ this.x = x; this.y = y; }
 
     private void recovering() {
         // 피해를 받으면 회복 지연 기능 추가?

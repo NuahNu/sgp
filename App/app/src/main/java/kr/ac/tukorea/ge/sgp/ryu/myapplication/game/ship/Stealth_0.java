@@ -37,11 +37,4 @@ public class Stealth_0 extends Ship {
     protected void initFacility() {
     }
 
-//    @Override
-//    protected void offsetArm(int i, Vector2D vec2) {
-//        if(i ==0)
-//            vec2.add(0,weaponArmLength);
-//        else
-//            vec2.add(0,-weaponArmLength);
-//    }
 }
