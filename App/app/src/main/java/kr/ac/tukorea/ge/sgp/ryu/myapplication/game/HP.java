@@ -23,13 +23,9 @@ public class HP extends Sprite implements IGameObject {
     public HP(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
 
-        setHP(100,100);
-        setRecovery(0,10);
         if(shieldPaint == null){
             shieldPaint = new Paint();
         }
-        // test code
-        getDamage(false,200);
     }
 
     public void setHP(int hull, int shield){
@@ -69,20 +65,23 @@ public class HP extends Sprite implements IGameObject {
 
     @Override
     public void update() {
-        shieldPaint.setAlpha((int) (currentShield * 255 / maxShield));
-        //test code
-//        getDamage(false,  10 * frameTime);
-
         recovering();
+        shieldPaint.setAlpha((int) (currentShield * 255 / maxShield));
     }
 
     private void recovering() {
         // 피해를 받으면 회복 지연 기능 추가?
         if(hullRecovery){
             currentHull += hullRecoveryRate * frameTime;
+            if(currentHull > maxHull){
+                currentHull = maxHull;
+            }
         }
         if(shieldRecovery){
             currentShield += shieldRecoveryRate * frameTime;
+            if( currentShield > maxShield ){
+                currentShield = maxShield;
+            }
         }
     }
 
