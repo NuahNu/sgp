@@ -13,7 +13,7 @@ public class Stealth_0 extends Ship {
         enginePower = 5;
         name = String.valueOf(R.string.stealth_0_name);
         className = String.valueOf(R.string.corvette);
-
+        ownHP.setHP(30, 200);
     }
 
     @Override

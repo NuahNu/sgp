@@ -27,6 +27,7 @@ public class Boss extends Ship {
         enginePower = 5;
         name = String.valueOf(R.string.boss_name);
         className = String.valueOf(R.string.flagShip);
+        ownHP.setHP(100,300);
     }
     private void changePhase(){
         phase++;

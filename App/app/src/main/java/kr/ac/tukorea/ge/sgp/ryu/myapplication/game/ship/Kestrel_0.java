@@ -13,6 +13,7 @@ public class Kestrel_0 extends Ship {
         enginePower = 5;
         name = String.valueOf(R.string.kestrel_0_name);
         className = String.valueOf(R.string.cruiser);
+        ownHP.setHP(50,100);
     }
 
     @Override

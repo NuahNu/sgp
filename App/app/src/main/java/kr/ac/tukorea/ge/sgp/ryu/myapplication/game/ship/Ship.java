@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility.Facility;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
@@ -26,6 +27,8 @@ public class Ship extends PhysicalObject {
     private boolean weaponPowered;
     protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
+
+    protected HP ownHP = new HP();
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
