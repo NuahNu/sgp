@@ -50,10 +50,16 @@ public class Ship extends PhysicalObject {
     protected final void renewalStatus(){       // mass가 Ship에서 정해지지 않음.
         // 질량 갱신
         mass = shipMass;
-        for(Weapon w : weaponList)
+        for(Weapon w : weaponList){
+            if(w == null)
+                continue;
             mass += w.getMass();
-        for(Facility w : facilityList)
-            mass += w.getMass();
+        }
+        for(Facility f : facilityList){
+            if(f == null)
+                continue;
+            mass += f.getMass();
+        }
         // 최대 속도 갱신
         // 선회율 갱신
         // PhysicalObject의 acceleration에 엔진 파워 적용.
@@ -75,8 +81,11 @@ public class Ship extends PhysicalObject {
     @Override
     public void update() {
         super.update();
-        for(Weapon w : weaponList)
+        for(Weapon w : weaponList){
+            if(w == null)
+                continue;
             w.update();
+        }
         // test code
 //        Vector2D tmp = new Vector2D();
 //        tmp.x = (enginePower / mass) * Math.cos(radian);
@@ -118,8 +127,11 @@ public class Ship extends PhysicalObject {
     public void draw(Canvas canvas) {
         int i = 0;
         Vector2D Vec2;
-        for(Weapon w : weaponList)
-        {
+        for(Weapon w : weaponList) {
+            if(w == null) {
+                i++;
+                continue;
+            }
             Vec2 = new Vector2D(weaponLocationList.get(i));
             offsetArm(i, Vec2);
 

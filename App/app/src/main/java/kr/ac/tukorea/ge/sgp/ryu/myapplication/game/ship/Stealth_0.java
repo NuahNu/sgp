@@ -23,11 +23,13 @@ public class Stealth_0 extends Ship {
     protected void initWeapon() {
         weaponList.add(new Laser(this, true));
         weaponList.add(new Laser(this, false));
+        weaponList.add(null);
         weaponList.add(new Laser(this, false));
     }
     protected void initWeaponLocation() {
         weaponLocationList.add(new Vector2D(150,37));
         weaponLocationList.add(new Vector2D(150,-37));
+        weaponLocationList.add(null);
         weaponLocationList.add(new Vector2D(-65,-108));
     }
 
@@ -35,11 +37,11 @@ public class Stealth_0 extends Ship {
     protected void initFacility() {
     }
 
-    @Override
-    protected void offsetArm(int i, Vector2D vec2) {
-        if(i ==0)
-            vec2.add(0,weaponArmLength);
-        else
-            vec2.add(0,-weaponArmLength);
-    }
+//    @Override
+//    protected void offsetArm(int i, Vector2D vec2) {
+//        if(i ==0)
+//            vec2.add(0,weaponArmLength);
+//        else
+//            vec2.add(0,-weaponArmLength);
+//    }
 }
