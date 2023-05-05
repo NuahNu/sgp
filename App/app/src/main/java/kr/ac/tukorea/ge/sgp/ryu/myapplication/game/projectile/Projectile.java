@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Projectile extends AnimSprite implements IBoxCollidable {
+    // 수명도 추가해야함.
 
     // 무기로부터 받는다.
     protected int projectileType; // 0 = 물리, 1 = 에너지 enum?
