@@ -26,7 +26,7 @@ public class Ship extends PhysicalObject {
     protected ArrayList<Vector2D> weaponLocationList = new ArrayList<>();      // 무기 배열
     protected ArrayList<Facility> facilityList = new ArrayList<>();  // 시설 배열
     // 나중에 Facility로 확인하도록 변경.
-    private boolean weaponPowered;
+    protected boolean weaponPowered;
     protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
     protected HP ownHP = null;
@@ -85,20 +85,18 @@ public class Ship extends PhysicalObject {
         for(Weapon w : weaponList){
             if(w == null)
                 continue;
-            w.update();
+            w.update(weaponPowered);
         }
-        // test code
-//        Vector2D tmp = new Vector2D();
-//        tmp.x = (enginePower / mass) * Math.cos(radian);
-//        tmp.y = (enginePower / mass) * Math.sin(radian);
-//         얘는 가속이니까 frametime을 곱해야할듯?
-//        tmp.multiply(frameTime);
-//        addImpulse(tmp);
-//        radian += Math.toRadians(30 * frameTime);
-        // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
-        updateWeaponArm();
-        ownHP.update();
+        if (ownHP != null) {
+
+            // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
+            updateWeaponArm();
+            ownHP.setPos(x, y);
+            ownHP.update();
+        }
 //---------------------------
+        // test code
+        getDamage(false,50*frameTime);
     }
 
     private void updateWeaponArm() {
@@ -140,11 +138,14 @@ public class Ship extends PhysicalObject {
             i++;
         }
         super.draw(canvas);
-        if(ownHP.shieldExist()){
-            // 실드를 그린다.
-            //canvas.drawBitmap(bitmap, null, dstRect, null);
-            ownHP.draw(canvas);
+        if (ownHP != null){
+            if(ownHP.shieldExist()){
+                // 실드를 그린다.
+                //canvas.drawBitmap(bitmap, null, dstRect, null);
+                ownHP.draw(canvas);
+            }
         }
+
         canvas.restore();
     }
 
@@ -156,12 +157,18 @@ public class Ship extends PhysicalObject {
     }
 
     public void getDamage(boolean damageType, float amount ) {
-       if( ownHP.getDamage(damageType, amount) ){
-           whenDeath();
-       }
+        if (ownHP != null) {
+            if( ownHP.getDamage(damageType, amount) ){
+                whenDeath();
+            }
+        }
     }
 
-    private void whenDeath() {
+    protected void whenDeath() {
         // 각 함선별로 Gib를 생성.
+    }
+
+    protected Gib getGib(int index) {
+        return null;
     }
 }

@@ -84,8 +84,8 @@ public class Weapon extends Sprite{
 
 
 
-    public void update() {
-        checkCoolTime();
+    public void update(boolean weaponPowered) {
+        checkCoolTime(weaponPowered);
         selectRect();
     }
 
@@ -108,7 +108,8 @@ public class Weapon extends Sprite{
         srcRect = rects[rectIndex];
     }
 
-    private void checkCoolTime() {
+    private void checkCoolTime(boolean weaponPowered) {
+        if(!weaponPowered) return;
         if(isFiring){
             if (remainingTime < firingTime) {
                 remainingTime += BaseScene.frameTime;
@@ -139,7 +140,7 @@ public class Weapon extends Sprite{
     private boolean updateBulletStock() {
         if(currentBulletStock < maxBulletStock){
             currentBulletStock++;
-            System.out.println("currentBulletStock : " + currentBulletStock);
+//            System.out.println("currentBulletStock : " + currentBulletStock);
         }
         if (currentBulletStock == maxBulletStock) {
             return true;
