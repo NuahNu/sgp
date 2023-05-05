@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 
 public class Ship extends PhysicalObject {
     protected String name;
+    protected String className;
     protected float shipMass;         // 비행기만의 질량.
     protected float enginePower;      // 엔진의 세기.
     protected final float LIMIT_RATE = 0.8f;   // 플레이어가 조작하지 않을 때 최고 속도 비율
@@ -23,7 +24,7 @@ public class Ship extends PhysicalObject {
     protected ArrayList<Facility> facilityList = new ArrayList<>();  // 시설 배열
     // 나중에 Facility로 확인하도록 변경.
     private boolean weaponPowered;
-    private float weaponArmLength;
+    protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
@@ -81,6 +82,11 @@ public class Ship extends PhysicalObject {
 //        addImpulse(tmp);
         radian += Math.toRadians(30 * frameTime);
         // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
+        updateWeaponArm();
+        //---------------------------
+    }
+
+    private void updateWeaponArm() {
         if (weaponPowered) {
             if(weaponArmLength < maxWeaponArmLength)
                 weaponArmLength += maxWeaponArmLength * frameTime;
@@ -101,8 +107,8 @@ public class Ship extends PhysicalObject {
                 weaponPowered = true;
             }
         }
-        //---------------------------
     }
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
@@ -111,13 +117,17 @@ public class Ship extends PhysicalObject {
         for(Weapon w : weaponList)
         {
             Vec2 = new Vector2D(weaponLocationList.get(i));
-            if(i%2 ==0)
-                Vec2.add(0,weaponArmLength);
-            else
-                Vec2.add(0,-weaponArmLength);
+            offsetArm(i, Vec2);
 
             w.draw(canvas, Vec2);
             i++;
         }
+    }
+
+    protected void offsetArm(int i, Vector2D vec2) {
+        if(i%2 ==0)
+            vec2.add(0,weaponArmLength);
+        else
+            vec2.add(0,-weaponArmLength);
     }
 }

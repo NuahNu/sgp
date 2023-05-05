@@ -2,4 +2,8 @@
     <string name="app_name">My Application</string>
     <string name="stealth_0_name">The Nesasio</string>
     <string name="kestrel_0_name">The Kestrel</string>
+    <string name="boss_name">Unknown</string>
+    <string name="flagShip">Flag ship</string>
+    <string name="cruiser">Cruiser</string>
+    <string name="corvette">Corvette</string>
 </resources>

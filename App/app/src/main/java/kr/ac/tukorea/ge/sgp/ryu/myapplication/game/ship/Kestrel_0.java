@@ -12,6 +12,7 @@ public class Kestrel_0 extends Ship {
         mass = 1;
         enginePower = 5;
         name = String.valueOf(R.string.kestrel_0_name);
+        className = String.valueOf(R.string.cruiser);
     }
 
     @Override
@@ -27,23 +28,4 @@ public class Kestrel_0 extends Ship {
     @Override
     protected void initFacility() {
     }
-
-//    @Override
-//    public void update() {
-//    }
-//
-//    @Override
-//    public void draw(Canvas canvas) {
-//        super.draw(canvas);
-//    }
-//
-//    @Override
-//    public RectF getCollisionRect() {
-//        return super.getCollisionRect();
-//    }
-//
-//    @Override
-//    public float getRadian() {
-//        return super.getRadian();
-//    }
 }

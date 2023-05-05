@@ -1,19 +1,21 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import android.graphics.Canvas;
 
-public class Stealth_0 extends Ship {
-    public Stealth_0(float cx, float cy) {
-        super(R.mipmap.stealth_0, cx, cy, 598, 364);
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
+
+public class Boss extends Ship {
+    public Boss(float cx, float cy) {
+        super(R.mipmap.boss_0, cx, cy, 458, 510);
         // 기체 제원
         maxSpeed = 5;
         mass = 1;
         enginePower = 5;
-        name = String.valueOf(R.string.stealth_0_name);
-        className = String.valueOf(R.string.corvette);
-
+        name = String.valueOf(R.string.boss_name);
+        className = String.valueOf(R.string.flagShip);
     }
 
     @Override
@@ -28,5 +30,10 @@ public class Stealth_0 extends Ship {
 
     @Override
     protected void initFacility() {
+    }
+
+    @Override
+    protected void offsetArm(int i, Vector2D vec2) {
+        vec2.add(weaponArmLength,0);
     }
 }
