@@ -17,7 +17,7 @@ public class Boss_Missile extends Weapon {
         rects = new Rect[] {
                 new Rect(  0,   0,   0 + 33,    65), //  재장전 1
                 new Rect(  33,  0,   33+ 33,   65),
-                new Rect(  66,  0,   66+ 33,   65),
+                new Rect(  66,  0,   66+ 33,   65),// 발사 1
         };
         maxBulletStock = 3;
         coolTime = 3;

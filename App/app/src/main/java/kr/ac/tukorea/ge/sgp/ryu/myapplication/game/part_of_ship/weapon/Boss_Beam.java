@@ -16,18 +16,23 @@ public class Boss_Beam extends Weapon {
 
         rects = new Rect[] {
                 new Rect(  0,   0,   0 + 33,    65), //  재장전 1
-                new Rect(  33,  0,   33+ 33,   65),
-                new Rect(  66,  0,   66+ 33,   65),
+                new Rect(  231, 0,   231+ 33,  65),
+                new Rect(  198, 0,   198+ 33,  65),
+                new Rect(  165, 0,   165+ 33,  65),
+                new Rect(  132, 0,   132+ 33,  65),
                 new Rect(  99,  0,   99+ 33,   65),
-                new Rect(  132, 0,   132+ 33,  65),// 5
-                new Rect(  165, 0,   165+ 33,  65),// 발사 1
+                new Rect(  33,  0,   33+ 33,   65),
+                new Rect(  66,  0,   66+ 33,   65),// 발사 1
+                new Rect(  99,  0,   99+ 33,   65),
+                new Rect(  132, 0,   132+ 33,  65),
+                new Rect(  165, 0,   165+ 33,  65),
                 new Rect(  198, 0,   198+ 33,  65),
                 new Rect(  231, 0,   231+ 33,  65),
         };
         maxBulletStock = 3;
         coolTime = 3;
         firingTime = 0.25f;
-        reloadingSprite = 2;
+        reloadingSprite = 7;
         firingSprite = 6;
     }
     @Override

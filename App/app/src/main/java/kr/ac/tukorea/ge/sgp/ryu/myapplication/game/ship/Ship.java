@@ -30,11 +30,11 @@ public class Ship extends PhysicalObject {
     protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
     protected HP ownHP = null;
+
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
 
-        radian = 0;
 
         initWeapon();
         initFacility();
@@ -68,6 +68,7 @@ public class Ship extends PhysicalObject {
         weaponPowered = true;
         weaponArmLength = 0;
         //---------------------------
+        radian = 0;
     }
 
     public void applyLimits(){
@@ -152,5 +153,15 @@ public class Ship extends PhysicalObject {
             vec2.add(0,weaponArmLength);
         else
             vec2.add(0,-weaponArmLength);
+    }
+
+    public void getDamage(boolean damageType, float amount ) {
+       if( ownHP.getDamage(damageType, amount) ){
+           whenDeath();
+       }
+    }
+
+    private void whenDeath() {
+        // 각 함선별로 Gib를 생성.
     }
 }

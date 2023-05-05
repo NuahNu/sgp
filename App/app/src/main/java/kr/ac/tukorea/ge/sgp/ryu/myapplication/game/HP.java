@@ -58,9 +58,9 @@ public class HP extends Sprite implements IGameObject {
         }
         if(currentHull < 0){
             currentHull = 0;
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
