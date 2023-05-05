@@ -24,7 +24,7 @@ public class Gib extends Ship {
     public void setSpeed(Vector2D input) {
         speed = new Vector2D(input);
         // 로직상 여기서 해야함. 뭔가 방법이 없을까?
-        addImpulse(new Vector2D(10 - Math.random()*20,10 - Math.random()*20));
+        addImpulse(new Vector2D(100 - Math.random()*200,100 - Math.random()*200));
     }
 
     public void setRadian(float input) { radian = input; }

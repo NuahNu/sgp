@@ -13,7 +13,7 @@ public class MainScene extends BaseScene {
     private static final String TAG = MainScene.class.getSimpleName();
     private final PlayerData playerData = new PlayerData();
     public enum Layer {
-        bg1, CelestialBody, gib, ship, bullet, bg2, ui, controller, COUNT
+        bg1, CelestialBody, bullet, ship, gib, bg2, ui, controller, COUNT
     }
 //    bg1
 //      우주배경
