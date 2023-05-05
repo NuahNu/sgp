@@ -6,7 +6,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 
 public class Kestrel_0 extends Ship {
     public Kestrel_0(float cx, float cy) {
-        super(R.mipmap.kestrel, cx, cy, 598, 364);
+        super(R.mipmap.kestrel_0, cx, cy, 598, 364);
         // 기체 제원
         maxSpeed = 5;
         mass = 1;

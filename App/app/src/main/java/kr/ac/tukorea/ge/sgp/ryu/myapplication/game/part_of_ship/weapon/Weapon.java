@@ -87,8 +87,6 @@ public class Weapon extends Sprite{
     public void update() {
         checkCoolTime();
         selectRect();
-
-        // 발사체를 생성하는 위치도 여기서 계사능ㄹ 할까?
     }
 
     private void selectRect() {
