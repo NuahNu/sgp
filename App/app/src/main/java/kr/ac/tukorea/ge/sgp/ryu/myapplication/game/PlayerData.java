@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Kestrel_0;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Stealth_0;
 
 public class PlayerData {
 
@@ -13,7 +14,8 @@ public class PlayerData {
 
 
     public PlayerData(){
-        Ship tmp = new Kestrel_0(450, 800);
+//        Ship tmp = new Kestrel_0(450, 800);
+        Ship tmp = new Stealth_0(450, 800);
         shipList.add(tmp);
     }
     public ArrayList<Ship> getShips(){

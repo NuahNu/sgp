@@ -11,6 +11,7 @@ public class Kestrel_0 extends Ship {
         maxSpeed = 5;
         mass = 1;
         enginePower = 5;
+        name = String.valueOf(R.string.kestrel_0_name);
     }
 
     @Override
