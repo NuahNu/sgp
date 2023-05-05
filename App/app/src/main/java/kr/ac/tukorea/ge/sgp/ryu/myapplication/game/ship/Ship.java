@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility.Facility;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
@@ -27,8 +29,7 @@ public class Ship extends PhysicalObject {
     private boolean weaponPowered;
     protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
-
-    protected HP ownHP = new HP();
+    protected HP ownHP = null;
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
@@ -86,7 +87,8 @@ public class Ship extends PhysicalObject {
         radian += Math.toRadians(30 * frameTime);
         // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
         updateWeaponArm();
-        //---------------------------
+        ownHP.update();
+//---------------------------
     }
 
     private void updateWeaponArm() {
@@ -114,7 +116,6 @@ public class Ship extends PhysicalObject {
 
     @Override
     public void draw(Canvas canvas) {
-        super.draw(canvas);
         int i = 0;
         Vector2D Vec2;
         for(Weapon w : weaponList)
@@ -125,6 +126,13 @@ public class Ship extends PhysicalObject {
             w.draw(canvas, Vec2);
             i++;
         }
+        super.draw(canvas);
+        if(ownHP.shieldExist()){
+            // 실드를 그린다.
+            //canvas.drawBitmap(bitmap, null, dstRect, null);
+            ownHP.draw(canvas);
+        }
+        canvas.restore();
     }
 
     protected void offsetArm(int i, Vector2D vec2) {

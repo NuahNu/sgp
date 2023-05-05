@@ -3,29 +3,39 @@ package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 
-public class HP implements IGameObject {
-    private int maxHull;
-    private int currentHull;
-    private int maxShield;
-    private int currentShield;
+public class HP extends Sprite implements IGameObject {
+    private float maxHull;
+    private float currentHull;
+    private float maxShield;
+    private float currentShield;
     private boolean hullRecovery;
     private boolean shieldRecovery;
-    private int hullRecoveryRate;
-    private int shieldRecoveryRate;
+    private float hullRecoveryRate;
+    private float shieldRecoveryRate;
+    private static Paint shieldPaint;
 
-    public HP(){
+
+    public HP(int bitmapResId, float cx, float cy, float width, float height) {
+        super(bitmapResId, cx, cy, width, height);
+
         setHP(100,100);
         setRecovery(0,10);
+        if(shieldPaint == null){
+            shieldPaint = new Paint();
+        }
+        // test code
+        getDamage(false,200);
     }
 
     public void setHP(int hull, int shield){
         maxHull = currentHull = hull;
         maxShield = currentShield = shield;
-        hullRecoveryRate = hull / 10;
-        shieldRecoveryRate = shield / 10;
+        setRecovery(hull / 10, shield / 10);
     }
 
     public void setRecovery(int hull, int shield){
@@ -35,7 +45,7 @@ public class HP implements IGameObject {
         shieldRecoveryRate = shield;
     }
 
-    public boolean getDamage(boolean damageType, int amount ){
+    public boolean getDamage(boolean damageType, float amount ){
         // 한 프레임에 데미지를 전부 기억해놨다가 update에서 전부 처리?
         if(damageType){
             // 물리
@@ -59,6 +69,10 @@ public class HP implements IGameObject {
 
     @Override
     public void update() {
+        shieldPaint.setAlpha((int) (currentShield * 255 / maxShield));
+        //test code
+//        getDamage(false,  10 * frameTime);
+
         recovering();
     }
 
@@ -74,6 +88,7 @@ public class HP implements IGameObject {
 
     @Override
     public void draw(Canvas canvas) {
-        // UI를 통해 구현. 아마도?
+        canvas.drawBitmap(bitmap, null, dstRect, shieldPaint);
     }
+    public boolean shieldExist(){ return maxShield != 0; }
 }

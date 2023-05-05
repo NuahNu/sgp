@@ -1,6 +1,8 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 
@@ -13,6 +15,7 @@ public class Stealth_0 extends Ship {
         enginePower = 5;
         name = String.valueOf(R.string.stealth_0_name);
         className = String.valueOf(R.string.corvette);
+        ownHP = new HP(R.mipmap.kestral_shields, cx, cy,800,562);
         ownHP.setHP(30, 200);
     }
 

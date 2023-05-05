@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
@@ -27,7 +29,9 @@ public class Boss extends Ship {
         enginePower = 5;
         name = String.valueOf(R.string.boss_name);
         className = String.valueOf(R.string.flagShip);
+        ownHP = new HP(R.mipmap.kestral_shields, cx, cy,610,680);
         ownHP.setHP(100,300);
+        // 보스용 실드 이미지 구해야함.
     }
     private void changePhase(){
         phase++;

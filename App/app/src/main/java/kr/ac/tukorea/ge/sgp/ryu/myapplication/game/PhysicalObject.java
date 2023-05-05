@@ -95,7 +95,6 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
         canvas.save();
         canvas.rotate((float) Math.toDegrees( radian), x, y);
         super.draw(canvas);
-        canvas.restore();
     }
 
     @Override

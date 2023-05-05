@@ -16,6 +16,7 @@ public class PlayerData {
 
     public PlayerData(){
 //        Ship tmp = new Kestrel_0(450, 800);
+//        Ship tmp = new Stealth_0(450, 800);
         Ship tmp = new Boss(450, 800);
         shipList.add(tmp);
     }
