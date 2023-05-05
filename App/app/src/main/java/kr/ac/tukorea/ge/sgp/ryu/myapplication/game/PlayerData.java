@@ -1,5 +1,8 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_height;
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_width;
+
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Boss;
@@ -17,7 +20,7 @@ public class PlayerData {
     public PlayerData(){
 //        Ship tmp = new Kestrel_0(450, 800);
 //        Ship tmp = new Stealth_0(450, 800);
-        Ship tmp = new Boss(450, 800);
+        Ship tmp = new Boss(game_width/2, game_height/2);
         shipList.add(tmp);
     }
     public ArrayList<Ship> getShips(){

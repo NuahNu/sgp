@@ -84,7 +84,7 @@ public class Ship extends PhysicalObject {
 //         얘는 가속이니까 frametime을 곱해야할듯?
 //        tmp.multiply(frameTime);
 //        addImpulse(tmp);
-        radian += Math.toRadians(30 * frameTime);
+//        radian += Math.toRadians(30 * frameTime);
         // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
         updateWeaponArm();
         ownHP.update();
