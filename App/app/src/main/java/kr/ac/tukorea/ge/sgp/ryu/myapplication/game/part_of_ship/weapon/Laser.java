@@ -12,7 +12,7 @@ public class Laser extends Weapon{
     private boolean isRightSide;
 
     public Laser(Ship inputOwner, boolean is_rightSide) {
-        super(R.mipmap.laser1_strip12, 100, 100, 16 * 2, 60 * 2, inputOwner);
+        super(R.mipmap.laser1_strip12, 100, 100, 16 * 1, 60 * 1, inputOwner);
         if(is_rightSide)
             setBitmapResource(R.mipmap.laser1_strip12);
         else

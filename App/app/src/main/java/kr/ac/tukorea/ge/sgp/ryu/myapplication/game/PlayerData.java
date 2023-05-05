@@ -18,9 +18,9 @@ public class PlayerData {
 
 
     public PlayerData(){
-//        Ship tmp = new Kestrel_0(450, 800);
-//        Ship tmp = new Stealth_0(450, 800);
-        Ship tmp = new Boss(game_width/2, game_height/2);
+//        Ship tmp = new Kestrel_0(game_width/2, game_height/2);
+        Ship tmp = new Stealth_0(game_width/2, game_height/2);
+//        Ship tmp = new Boss(game_width/2, game_height/2);
         shipList.add(tmp);
     }
     public ArrayList<Ship> getShips(){

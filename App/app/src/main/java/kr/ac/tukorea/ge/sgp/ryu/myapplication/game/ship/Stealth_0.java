@@ -23,10 +23,12 @@ public class Stealth_0 extends Ship {
     protected void initWeapon() {
         weaponList.add(new Laser(this, true));
         weaponList.add(new Laser(this, false));
+        weaponList.add(new Laser(this, false));
     }
     protected void initWeaponLocation() {
-        weaponLocationList.add(new Vector2D(150,39));
-        weaponLocationList.add(new Vector2D(150,-39));
+        weaponLocationList.add(new Vector2D(150,37));
+        weaponLocationList.add(new Vector2D(150,-37));
+        weaponLocationList.add(new Vector2D(-65,-122));
     }
 
     @Override
