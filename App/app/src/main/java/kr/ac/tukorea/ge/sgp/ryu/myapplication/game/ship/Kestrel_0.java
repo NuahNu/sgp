@@ -25,8 +25,6 @@ public class Kestrel_0 extends Ship {
         className = String.valueOf(R.string.cruiser);
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,800,503);
         ownHP.setHP(50,100);
-        // test code
-        addImpulse(new Vector2D(10,0));
     }
 
     @Override
@@ -41,13 +39,6 @@ public class Kestrel_0 extends Ship {
         weaponLocationList.add(new Vector2D(210,-46));
         weaponLocationList.add(new Vector2D(46,76));
         weaponLocationList.add(new Vector2D(46,-76));
-    }
-
-    @Override
-    public void update() {
-        super.update();
-        System.out.println("speed"+speed);
-
     }
 
     @Override
