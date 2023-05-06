@@ -35,7 +35,7 @@ public class MainScene extends BaseScene {
         // playerData는 모든 Scene에서 접근 가능해야함.
         // BaseScene에 있는게 맞지 않을까?
         ArrayList<Ship> shipList = playerData.getShips();
-        Ship tmp = shipList.get(0);
+        Ship tmp = shipList.get(2); // K, S, B
         add(Layer.ship, tmp);
         //----
 //        add(Layer.bg1, new ScrollBackground(R.mipmap.backgraound_20,new PointF(100,100)));

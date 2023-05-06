@@ -43,6 +43,7 @@ public class Ship extends PhysicalObject {
     }
 
     protected void initWeapon() {}
+
     protected void initWeaponLocation() {}
 
     protected void initFacility() {}
@@ -72,9 +73,11 @@ public class Ship extends PhysicalObject {
     public void applyLimits(){
         maxSpeed *= LIMIT_RATE;
     }
+
     public void liftLimits(){
         maxSpeed /= LIMIT_RATE;
     }
+
     public float getWeaponArmLength(){return weaponArmLength;}
 
     @Override
