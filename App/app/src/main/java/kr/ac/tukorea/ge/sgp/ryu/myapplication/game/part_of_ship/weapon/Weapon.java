@@ -6,9 +6,10 @@ import android.graphics.Rect;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.IPartOfShip;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
-public class Weapon extends Sprite{
+public class Weapon extends Sprite implements IPartOfShip {
     // 4/19 수업에서 사용한 방법을 적용
     protected Ship owner;
     protected float mass;
@@ -44,10 +45,9 @@ public class Weapon extends Sprite{
         remainingTime = 0;
     }
 
-    public float getMass(){
-        return mass;
-    }
-    
+    @Override
+    public float getMass(){ return mass; }
+
     public void fire(){
         if(!isFiring) {
             if(currentBulletStock > 0){
@@ -60,6 +60,7 @@ public class Weapon extends Sprite{
         }
     }
 
+    @Override
     public Ship getOwner() {
         return owner;
     }
@@ -82,10 +83,9 @@ public class Weapon extends Sprite{
         // 이때 객체의 위치값은 이미지의 중하 에 해당.
     }
 
-
-
-    public void update(boolean weaponPowered) {
-        checkCoolTime(weaponPowered);
+    @Override
+    public void update(boolean powered) {
+        checkCoolTime(powered);
         selectRect();
     }
 
