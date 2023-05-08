@@ -21,7 +21,6 @@
 ![FTL_무기UI](https://user-images.githubusercontent.com/104414203/229501925-e582c354-d8e0-44d4-9bb2-cc35be1052cc.png)
 3. 적과 전투\
 ![Event_Horizon](https://user-images.githubusercontent.com/104414203/229504605-9e8ba9f9-7ec4-42b9-874e-9c655e402c55.png)
-조작법 추가.
 4. 2, 3을 반복.
  
 # 개발 일정
@@ -36,8 +35,8 @@
 9주 : 게임답도록 수정.
 
 # 진행도
-깃허브 이미지도 추가.
-진행도 이미지(표) 추가
+![깃 Commits](https://user-images.githubusercontent.com/104414203/236822986-b59d6796-772c-4a7c-8e24-eb5b8327c1d5.png)
+![표](https://user-images.githubusercontent.com/104414203/236828137-6719db0f-7312-443c-82e8-fc8729272f8e.png)
 
 # 발표 동영상링크
 [1차 링크](https://youtu.be/tVGMmG-SmUk)\
@@ -132,8 +131,8 @@
 >>
 >>> ### Kestrel_0
 >>> 게임 FTL의 The Kestrel을 구현.\
->>> 이미지 추가. gib 이미지도 추가\
 >>> 부착 가능한 무기는 4개.
+>>> ![kestrel_0](https://user-images.githubusercontent.com/104414203/236832699-fd3b90cc-d7b1-4f4c-ad8f-aa0252001778.png)
 >>>
 >>>### 구현된 부분 - 80%
 >>> 게임이 완성되면 세세한 제원의 밸런스를 잡아야 함.\
@@ -142,8 +141,8 @@
 >>
 >>> ### Stealth_0
 >>> 게임 FTL의 The Nesasio를 구현.\
->>> 이미지 추가. gib 이미지도 추가\
 >>> 부착 가능한 무기는 4개.
+>>> ![stealth_0](https://user-images.githubusercontent.com/104414203/236832720-f78b3d92-e138-4ae6-86ba-1e136563ea79.png)
 >>>
 >>>### 구현된 부분 - 80%
 >>> 게임이 완성되면 세세한 제원의 밸런스를 잡아야 함.\
@@ -152,9 +151,9 @@
 >>
 >>> ### Boss
 >>> 게임 FTL의 적 보스 기함을 구현.\
->>> 이미지 추가. gib 이미지도 추가\
 >>> 부착 가능한 무기는 4개.\
 >>> 전용 무기를 사용함.
+>>> ![boss_0](https://user-images.githubusercontent.com/104414203/236832730-e51157a2-a160-4c99-89b2-d513c7f723e0.png)
 >>>
 >>>### 구현된 부분 - 90%
 >>> 게임이 완성되면 세세한 제원의 밸런스를 잡아야 함.\
@@ -165,6 +164,7 @@
 >>> 생성될때 본래의 함선의 정보를 전달받아 생성됨.\
 >>> 현재는 속도, 회전각, 무기 관련 정보들을 받음.\
 >>> 생성될때 임의의 방향으로 날아가며, 회전한다.
+>>> ![Gib](https://user-images.githubusercontent.com/104414203/236832216-20bb402b-ff98-4ba3-b958-9f16ff5a4413.png)
 >>> 
 >>> ### 구현된 부분 - 100%
 
