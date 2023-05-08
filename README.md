@@ -119,6 +119,7 @@
 >> 실드까지는 함께 canvas를 변환시켜 그림.\
 >> 멤버변수 weaponList의 Weapon들의 draw를도 자신의 draw에서 호출함.\
 >> weaponLocationList와 weaponArmLength로 무기의 위치를 보정.\
+>> weaponLocationList의 위치에서 Weapon의 길이만큼 떨어진 위치에 Weapon을 그려 길이가 달라도 Arm 부분의 위치가 같아지도록 그린다.\
 >> 무기를 그릴때에는 입력한 좌표에 무기 이미지의 중앙 하단이 오도록 그림.
 >>
 >> ~~여유가 되면~~\
