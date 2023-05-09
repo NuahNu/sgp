@@ -1,5 +1,8 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game;
 
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_height;
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_width;
+
 import android.graphics.PointF;
 import android.view.MotionEvent;
 
@@ -10,6 +13,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.Camera;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.CameraSetter;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Kestrel_0;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class MainScene extends BaseScene {
@@ -58,6 +62,7 @@ public class MainScene extends BaseScene {
 //        add(Layer.ship, player);
 //        player = shipList.get(0); // K, S, B
 //        add(Layer.ship, player);
+        add(Layer.ship, new Kestrel_0(game_width/4, game_height/2));
 
 //        gib,
 //        bg2,

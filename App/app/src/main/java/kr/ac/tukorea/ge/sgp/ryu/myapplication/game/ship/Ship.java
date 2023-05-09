@@ -97,7 +97,7 @@ public class Ship extends PhysicalObject {
         }
 //---------------------------
         // test code
-        getDamage(false,50*frameTime);
+//        getDamage(false,50*frameTime);
     }
 
     private void updateWeaponArm() {

@@ -1,5 +1,7 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
+import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
+
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
@@ -34,6 +36,9 @@ public class Boss extends Ship {
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,610,680);
         ownHP.setHP(100,300);
         // 보스용 실드 이미지 구해야함.
+
+        //test code
+        addImpulse(new Vector2D(500,0));
     }
     private void changePhase(){
         if(phase > 2) return;

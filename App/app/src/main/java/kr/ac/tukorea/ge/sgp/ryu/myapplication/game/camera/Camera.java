@@ -11,7 +11,7 @@ public class Camera implements IGameObject {
     private float current_X, current_Y, target_X, target_Y;
     private float current_scale, target_scale;
     private final float EPSILON = 0.1f;
-    private final float RATIO = 1;
+    private final float RATIO = 1f;
 
     public Camera(){
         // 정 중앙의 좌표. 스케일의 최대값이 10.
@@ -25,14 +25,14 @@ public class Camera implements IGameObject {
         // 현재 좌표를 목표 좌표로 바꿔준다.
         // 위치와 배율을 바꾼다.
         if(Math.abs(current_X - target_X) > EPSILON){
-            current_X -= (current_X - target_X) * frameTime * RATIO;
+            current_X -= (current_X - target_X);// * frameTime * RATIO;
 //            System.out.println(current_X - target_X);
         }
         if(Math.abs(current_Y - target_Y) > EPSILON){
-            current_Y -= (current_Y - target_Y) * frameTime * RATIO;
+            current_Y -= (current_Y - target_Y);// * frameTime * RATIO;
         }
         if(Math.abs(current_scale - target_scale) > EPSILON){
-            current_scale -= (current_scale - target_scale) * frameTime * RATIO;
+            current_scale -= (current_scale - target_scale);// * frameTime * RATIO;
         }
     }
 
