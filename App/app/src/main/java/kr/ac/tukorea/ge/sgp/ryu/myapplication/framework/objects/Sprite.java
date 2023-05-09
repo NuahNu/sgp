@@ -11,6 +11,9 @@ public class Sprite implements IGameObject {
     protected Bitmap bitmap;
     protected RectF dstRect = new RectF();
     protected float x, y, width, height;
+
+    protected Sprite() {}
+
     public Sprite(int bitmapResId, float cx, float cy, float width, float height) {
         // 위치
         this.x = cx;

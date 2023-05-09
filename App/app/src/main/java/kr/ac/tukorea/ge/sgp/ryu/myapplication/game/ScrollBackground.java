@@ -10,14 +10,12 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 
 public class ScrollBackground extends Sprite {
     private final PointF speed;
-//    private final float height, width;
     private PointF scroll = new PointF(0,0);
-    public ScrollBackground(int bitmapResId, PointF speed) {
-        super(bitmapResId, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height);
-        this.height = bitmap.getHeight() * Metrics.game_width / bitmap.getWidth();
-        this.width = bitmap.getWidth() * Metrics.game_height / bitmap.getHeight();
-        setSize(Metrics.game_width, height);    // fits in game_width
-//        setSize(width, Metrics.game_height);  // fits in game_height
+    public ScrollBackground(int bitmapResId, PointF speed, float width, float height) {
+        setBitmapResource(bitmapResId);
+        this.width = width;
+        this.height = height;
+        fixDstRect();
         this.speed = speed;
     }
     @Override
@@ -28,18 +26,20 @@ public class ScrollBackground extends Sprite {
 
     @Override
     public void draw(Canvas canvas) {
-        PointF curr = new PointF(0,0);
-        curr.x = scroll.x % width;
-        curr.y = scroll.y % height;
-        if (curr.x > 0) curr.x -= width;
-        if (curr.y > 0) curr.y -= height;
-        while (curr.y < Metrics.game_height) {
-            while (curr.x < Metrics.game_width) {
-                dstRect.offsetTo(curr.x,curr.y);
+        float currX = 0;
+        float currY;
+        currX = scroll.x % width;
+        if (currX > 0) currX -= width;
+        while (currX < Metrics.game_width) {
+            currY = 0;
+            currY = scroll.y % height;
+            if (currY > 0) currY -= height;
+            while (currY < Metrics.game_height) {
+                dstRect.offsetTo(currX,currY);
                 super.draw(canvas);
-                curr.x += height;
+                currY += height;
             }
-            curr.y += height;
+            currX += width;
         }
     }
 }
