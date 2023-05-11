@@ -1,7 +1,5 @@
 package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship;
 
-import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
-
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
@@ -11,7 +9,6 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Beam
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Ion;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Laser;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Boss_Missile;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
 
 public class Boss extends Ship {
     private int phase;
@@ -28,7 +25,6 @@ public class Boss extends Ship {
         };
         phase = 0;
         // 기체 제원
-        maxSpeed = 5;
         mass = 1;
         enginePower = 5;
         name = String.valueOf(R.string.boss_name);
@@ -36,9 +32,8 @@ public class Boss extends Ship {
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,610,680);
         ownHP.setHP(100,300);
         // 보스용 실드 이미지 구해야함.
+//        addImpulse(new Vector2D(1000,0));
 
-        //test code
-        addImpulse(new Vector2D(500,0));
     }
     private void changePhase(){
         if(phase > 2) return;
@@ -48,6 +43,7 @@ public class Boss extends Ship {
         if(phase > 2) return;
         setBitmapResource(bitmapResId[phase]);
         ownHP.setHP(100,300);
+        renewalMassStatus();
     }
 
     @Override

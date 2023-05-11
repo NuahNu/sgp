@@ -77,9 +77,8 @@ public class MainScene extends BaseScene {
         add(Layer.touch, new AnalogStick(1000.0f, 7000.0f, 3000.0f, new AnalogStick.Callback() {
             @Override
             public boolean onTouch(AnalogStick.Action action, float radian) {
-                Log.d(TAG, "AnalogStick. radian = "+ radian);
+//                Log.d(TAG, "AnalogStick. radian = "+ radian);
                 player.radianInput(action, radian);
-//                player.slide(action == Button.Action.pressed);
                 return true;
             }
         }));

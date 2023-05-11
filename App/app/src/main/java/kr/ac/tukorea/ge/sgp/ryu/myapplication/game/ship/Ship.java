@@ -70,7 +70,7 @@ public class Ship extends PhysicalObject {
             mass += f.getMass();
         }
         // 최대 속도 갱신
-        maxSpeed = enginePower * mass;
+        maxSpeed = enginePower* 2;
         // 선회율 갱신
         turnRate = 1;
 
@@ -108,15 +108,16 @@ public class Ship extends PhysicalObject {
     }
 
     private void updateRadian() {
+        if(Math.abs(this.radian - targetRadian) > Math.toRadians(180)) {
+            if (targetRadian > this.radian)
+                this.radian += Math.toRadians(360);
+            else
+                this.radian -= Math.toRadians(360);
+        }
         if(Math.abs(this.radian - targetRadian) > 0.001){
-            if(Math.abs(this.radian - targetRadian) > Math.toRadians(180)){
-                if(targetRadian > this.radian)
-                    this.radian += Math.toRadians(360);
-                else
-                    this.radian -= Math.toRadians(360);
-            }
             this.radian += (targetRadian - this.radian) * frameTime * turnRate;
-        }else{
+        }
+        if(Math.abs(this.radian - targetRadian) > 0.1){
             if(engineFlag){
                 Vector2D tmp = new Vector2D(Math.cos(radian),Math.sin(radian));
                 tmp.multiply(mass*enginePower);
@@ -212,6 +213,5 @@ public class Ship extends PhysicalObject {
 //                targetRadian = this.radian; // 보류가능
                 break;
         }
-        System.out.println("radian "+radian);
     }
 }
