@@ -60,10 +60,12 @@ public class CameraSetter implements IGameObject{
             new_X = (player.getX() + enemy.getX()) / 2;
             new_Y = (player.getY() + enemy.getY()) / 2;
 
+            float cameraPadding = Math.max(player.getSize(), enemy.getSize());
+
 //            떨어진 거리와 화면 비율을 계산해 scale을 정한다.
-            float dist_X = Math.abs(player.getX() - enemy.getX());
-            float dist_Y = Math.abs(player.getY() - enemy.getY()); // 비율 적용.
-            float dist = Math.max(dist_X, dist_Y / Metrics.game_height * Metrics.game_width);
+            float dist_X = Math.abs(player.getX() - enemy.getX()) + cameraPadding;
+            float dist_Y = Math.abs(player.getY() - enemy.getY()) + cameraPadding;
+            float dist = Math.max(dist_X, dist_Y / Metrics.game_height * Metrics.game_width);// 비율 적용.
 
 //            new_scale = -((Metrics.game_width)*1.0f / (MAX_SCALE - MIN_SCALE)) / dist + MAX_SCALE;
             new_scale = Metrics.game_width / dist;
@@ -76,16 +78,16 @@ public class CameraSetter implements IGameObject{
                 // 플레이어가 보이도록 x,y값을 수정해야한다.
                 if(dist_X > Metrics.game_width / SCALE_LIMIT) {
                     if (player.getX() > enemy.getX()){
-                        new_X = player.getX() - (Metrics.game_width / SCALE_LIMIT) / 2;
+                        new_X = player.getX() - (Metrics.game_width / SCALE_LIMIT) / 2 + cameraPadding / 2;
                     }else{
-                        new_X = player.getX() + (Metrics.game_width / SCALE_LIMIT) / 2;
+                        new_X = player.getX() + (Metrics.game_width / SCALE_LIMIT) / 2 - cameraPadding / 2;
                     }
                 }
                 if(dist_Y > Metrics.game_height / SCALE_LIMIT) {
                     if(player.getY() > enemy.getY()){
-                        new_Y = player.getY() - (Metrics.game_height / SCALE_LIMIT) / 2;
+                        new_Y = player.getY() - (Metrics.game_height / SCALE_LIMIT) / 2 + player.getSize() / 2;
                     }else{
-                        new_Y = player.getY() + (Metrics.game_height / SCALE_LIMIT) / 2;
+                        new_Y = player.getY() + (Metrics.game_height / SCALE_LIMIT) / 2 - player.getSize() / 2;
                     }
                 }
             }else if(new_scale > MAX_SCALE ) {  // 반대의 경우도 제한해야한다.

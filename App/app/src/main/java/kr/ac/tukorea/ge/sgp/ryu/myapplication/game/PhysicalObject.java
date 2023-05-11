@@ -97,4 +97,7 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
     public Vector2D getSpeed() {
         return speed;
     }
+
+    public float getSize(){ return Math.max(width,height); }
+
 }
