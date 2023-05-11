@@ -33,9 +33,9 @@ public class CameraSetter implements IGameObject{
     public void update() {
         // ship들을 읽어와 위치와 배율을 정한다.
         // 목표 좌표를 바꿔준다.
-        float new_X = 0;
-        float new_Y = 0;
-        float new_scale = 0;
+        float new_X;
+        float new_Y;
+        float new_scale;
 
         selectEnemy();
 
@@ -69,10 +69,9 @@ public class CameraSetter implements IGameObject{
             new_scale = Metrics.game_width / dist;
 
             //new_scale = MIN_SCALE;
-            ;
+
             // 너무 작으면 안보인다. 제한을 걸어야 한다.
             if(new_scale < SCALE_LIMIT){
-                float exceededScale  = SCALE_LIMIT - new_scale;
                 new_scale = SCALE_LIMIT;
                 // 플레이어가 보이도록 x,y값을 수정해야한다.
                 if(dist_X > dist_Y){
