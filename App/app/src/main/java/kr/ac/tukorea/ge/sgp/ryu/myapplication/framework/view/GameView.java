@@ -114,7 +114,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
             int count = (scene != null) ? scene.count() : 0;
             canvas.drawText("FPS: " + fps + " objs: " + count, 100f, 100f, fpsPaint);
             Ship player = ((MainScene)scene).getPlayer();
-            canvas.drawText("Speed: (" + (int)player.getSpeed().x+", "+(int)player.getSpeed().y + ") Degree: " + -Math.toDegrees(player.getRadian()), 100f, 200f, fpsPaint);
+            canvas.drawText("Speed: "+(int)(player.getSpeed().getLength())+"(" + (int)player.getSpeed().x+", "+(int)player.getSpeed().y+")", 100f, 200f, fpsPaint);
 
         }
     }
