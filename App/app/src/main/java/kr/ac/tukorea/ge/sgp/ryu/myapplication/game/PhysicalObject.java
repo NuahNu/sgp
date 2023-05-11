@@ -23,7 +23,7 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
         super(bitmapResId, cx, cy, width, height);
     }
 
-    protected void renewalStatus(){}
+    protected void renewalMassStatus(){}
 
     protected void fixCollisionRect() {
         collisionRect.set(dstRect);

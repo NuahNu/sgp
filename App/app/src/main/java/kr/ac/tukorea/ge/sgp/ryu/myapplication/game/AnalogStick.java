@@ -13,6 +13,9 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 public class AnalogStick extends Sprite implements ITouchable {
     private static final String TAG = AnalogStick.class.getSimpleName();
     private final Callback callback;
+    private float radian;
+    private boolean stickVisibility;
+
     public enum Action {
         pressed, moved, released,
     }
@@ -23,7 +26,7 @@ public class AnalogStick extends Sprite implements ITouchable {
     private float DEFAULT_Y;
 
     public interface Callback {
-        public boolean onTouch(float radian);
+        public boolean onTouch(AnalogStick.Action action, float radian);
     }
     public AnalogStick(float cx, float cy, float size, Callback callback) {
         super(R.mipmap.analog_stick_1, cx, cy, size, size);
@@ -40,29 +43,42 @@ public class AnalogStick extends Sprite implements ITouchable {
         float touched_x = Metrics.toGameX(e.getX());
         float touched_y = Metrics.toGameY(e.getY());
         int action = e.getAction();
+        AnalogStick.Action actionOut = Action.pressed;
         switch (action){
             case MotionEvent.ACTION_DOWN:
 //                if (!dstRect.contains(touched_x, touched_y)) {
 //                    return false;
 //                }
-                this.setPos(touched_x,touched_y);
+                this.setPos(touched_x,touched_y);   // 고정시
+                stick.setPos(touched_x,touched_y);
+                actionOut = Action.pressed;
                 break;
             case MotionEvent.ACTION_MOVE:
                 stick.setPos(touched_x,touched_y);
+                actionOut = Action.moved;
+                this.stickVisibility = true;
                 break;
             case MotionEvent.ACTION_UP:
-                setPos(DEFAULT_X,DEFAULT_Y);
+                setPos(DEFAULT_X,DEFAULT_Y);    // 고정시
                 stick.setPos(this.x,this.y);
+                actionOut = Action.released;
+                this.stickVisibility = false;
                 break;
         }
-        callback.onTouch((float) Math.atan2(stick.getX() - this.x, stick.getY() - this.y));
+        if(action == MotionEvent.ACTION_MOVE)
+            this.radian = -(float) ( Math.atan2(stick.getX() - this.x, stick.getY() - this.y) - Math.toRadians(90));
+        callback.onTouch(actionOut, radian);
 //        Log.d(TAG, "Button.onTouch(" + System.identityHashCode(this) + ", " + e.getAction() + ", " + e.getX() + ", " + e.getY());
         return true;
     }
 
     @Override
     public void draw(Canvas canvas) {
+        canvas.save();
+        if(stickVisibility)
+            stick.draw(canvas); // 빼도?
+        canvas.rotate((float) Math.toDegrees( radian), x, y);
         super.draw(canvas);
-        stick.draw(canvas);
+        canvas.restore();
     }
 }

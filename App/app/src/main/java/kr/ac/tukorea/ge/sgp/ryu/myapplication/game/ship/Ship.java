@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Button;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.AnalogStick;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility.Facility;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
@@ -30,6 +30,8 @@ public class Ship extends PhysicalObject {
     protected float weaponArmLength;
     private final float maxWeaponArmLength = 14f;
     protected HP ownHP = null;
+    private float targetRadian;
+    private boolean engineFlag;
 
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
@@ -39,7 +41,13 @@ public class Ship extends PhysicalObject {
         initWeapon();
         initFacility();
         initWeaponLocation();
-        renewalStatus();
+        renewalMassStatus();
+        // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
+        weaponPowered = true;
+        weaponArmLength = 0;
+        //---------------------------
+        radian = 0;
+        engineFlag = false;
     }
 
     protected void initWeapon() {}
@@ -48,7 +56,7 @@ public class Ship extends PhysicalObject {
 
     protected void initFacility() {}
 
-    protected final void renewalStatus(){       // mass가 Ship에서 정해지지 않음.
+    protected final void renewalMassStatus(){       // mass가 Ship에서 정해지지 않음.
         // 질량 갱신
         mass = shipMass;
         for(Weapon w : weaponList){
@@ -62,12 +70,10 @@ public class Ship extends PhysicalObject {
             mass += f.getMass();
         }
         // 최대 속도 갱신
+        maxSpeed = enginePower * mass;
         // 선회율 갱신
-        // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
-        weaponPowered = true;
-        weaponArmLength = 0;
-        //---------------------------
-        radian = 0;
+        turnRate = 1;
+
     }
 
     public void applyLimits(){
@@ -94,10 +100,29 @@ public class Ship extends PhysicalObject {
             updateWeaponArm();
             ownHP.setPos(x, y);
             ownHP.update();
+            updateRadian();
         }
 //---------------------------
         // test code
 //        getDamage(false,50*frameTime);
+    }
+
+    private void updateRadian() {
+        if(Math.abs(this.radian - targetRadian) > 0.001){
+            if(Math.abs(this.radian - targetRadian) > Math.toRadians(180)){
+                if(targetRadian > this.radian)
+                    this.radian += Math.toRadians(360);
+                else
+                    this.radian -= Math.toRadians(360);
+            }
+            this.radian += (targetRadian - this.radian) * frameTime * turnRate;
+        }else{
+            if(engineFlag){
+                Vector2D tmp = new Vector2D(Math.cos(radian),Math.sin(radian));
+                tmp.multiply(mass*enginePower);
+                addImpulse(tmp);
+            }
+        }
     }
 
     private void updateWeaponArm() {
@@ -171,5 +196,22 @@ public class Ship extends PhysicalObject {
 
     protected Gib getGib(int index) {
         return null;
+    }
+
+    public void radianInput(AnalogStick.Action action, float radian){
+        switch (action){
+            case pressed:
+                this.engineFlag = true;
+//                targetRadian = radian;
+                break;
+            case moved:
+                targetRadian = radian;
+                break;
+            case released:
+                this.engineFlag = false;
+//                targetRadian = this.radian; // 보류가능
+                break;
+        }
+        System.out.println("radian "+radian);
     }
 }
