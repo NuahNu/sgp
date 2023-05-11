@@ -72,7 +72,7 @@ public class Ship extends PhysicalObject {
         // 최대 속도 갱신
         maxSpeed = enginePower* 2;
         // 선회율 갱신
-        turnRate = 1;
+        turnRate = (float) Math.toRadians(180);
 
     }
 
@@ -108,6 +108,7 @@ public class Ship extends PhysicalObject {
     }
 
     private void updateRadian() {
+        float sign;
         if(Math.abs(this.radian - targetRadian) > Math.toRadians(180)) {
             if (targetRadian > this.radian)
                 this.radian += Math.toRadians(360);
@@ -115,12 +116,21 @@ public class Ship extends PhysicalObject {
                 this.radian -= Math.toRadians(360);
         }
         if(Math.abs(this.radian - targetRadian) > 0.001){
-            this.radian += (targetRadian - this.radian) * frameTime * turnRate;
+            if(radian > targetRadian){
+                this.radian -= frameTime * turnRate;
+                if(radian < targetRadian)
+                    radian = targetRadian;
+            }
+            else{
+                this.radian += frameTime * turnRate;
+                if(radian > targetRadian)
+                    radian = targetRadian;
+            }
         }
-        if(Math.abs(this.radian - targetRadian) > 0.1){
+        if(Math.abs(this.radian - targetRadian) < 0.1){
             if(engineFlag){
                 Vector2D tmp = new Vector2D(Math.cos(radian),Math.sin(radian));
-                tmp.multiply(mass*enginePower);
+                tmp.multiply(mass*enginePower * frameTime); // 가속도는 frameTime 곱해주고
                 addImpulse(tmp);
             }
         }
