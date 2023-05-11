@@ -64,7 +64,7 @@ public class MainScene extends BaseScene {
 //        add(Layer.ship, player);
 //        player = shipList.get(0); // K, S, B
 //        add(Layer.ship, player);
-        add(Layer.ship, new Kestrel_0(game_width/4, game_height/2));
+        add(Layer.ship, new Kestrel_0(game_width/2, game_height/2));
 
 //        gib,
 //        bg2,
@@ -87,24 +87,9 @@ public class MainScene extends BaseScene {
 
 //        COUNT
     }
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = event.getAction();
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN:
-//            case MotionEvent.ACTION_MOVE:
-//                스틱을 터치해서 스틱의 각을 정한다.
-//                스틱과 플레이어의 radian이 같으면 가속을 한다.
-//                다르면 플레이어의 각을 스틱의 각으로 회전한다.
-//                무기별 발사 버튼을 눌러 탄 발사.
-//                float x = Metrics.toGameX(event.getX());
-//                float y = Metrics.toGameY(event.getY());
-//                fighter.setTargetPosition(x, y);
-//                return true;
-//        }
-//        return super.onTouchEvent(event);
-//    }
     @Override
     protected int getTouchLayerIndex() {
         return Layer.touch.ordinal();
     }
+    public Ship getPlayer(){ return player; }
 }

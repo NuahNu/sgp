@@ -12,6 +12,8 @@ import android.view.View;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.BuildConfig;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 /**
  * TODO: document your custom view class.
@@ -47,7 +49,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         if (BuildConfig.DEBUG) {
             fpsPaint = new Paint();
             fpsPaint.setColor(Color.BLUE);
-            fpsPaint.setTextSize(100f);
+            fpsPaint.setTextSize(80f);
 
             borderPaint = new Paint();
             borderPaint.setColor(Color.RED);
@@ -110,7 +112,10 @@ public class GameView extends View implements Choreographer.FrameCallback {
         if (BuildConfig.DEBUG && BaseScene.frameTime > 0) {
             int fps = (int) (1.0f / BaseScene.frameTime);
             int count = (scene != null) ? scene.count() : 0;
-            canvas.drawText("FPS: " + fps + " objs: " + count, 100f, 200f, fpsPaint);
+            canvas.drawText("FPS: " + fps + " objs: " + count, 100f, 100f, fpsPaint);
+            Ship player = ((MainScene)scene).getPlayer();
+            canvas.drawText("Speed: (" + (int)player.getSpeed().x+", "+(int)player.getSpeed().y + ") Degree: " + -Math.toDegrees(player.getRadian()), 100f, 200f, fpsPaint);
+
         }
     }
 
