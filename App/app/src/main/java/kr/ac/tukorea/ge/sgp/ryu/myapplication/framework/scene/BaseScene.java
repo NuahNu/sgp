@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.BuildConfig;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IRecyclable;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.projectile.Projectile;
 
@@ -160,7 +161,21 @@ public class BaseScene {
     }
 
     public boolean onTouchEvent(MotionEvent event) {
+        int touchLayer = getTouchLayerIndex();
+        if (touchLayer < 0) return false;
+        ArrayList<IGameObject> gameObjects = layers.get(touchLayer);
+        for (IGameObject gobj : gameObjects) {
+            if (!(gobj instanceof ITouchable)) {
+                continue;
+            }
+            boolean processed = ((ITouchable) gobj).onTouchEvent(event);
+            if (processed) return true;
+        }
         return false;
+    }
+
+    protected int getTouchLayerIndex() {
+        return -1;
     }
 
     public boolean clipsRect() {

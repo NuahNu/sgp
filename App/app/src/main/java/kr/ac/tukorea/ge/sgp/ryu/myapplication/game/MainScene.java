@@ -4,11 +4,13 @@ import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game
 import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_width;
 
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Button;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.Camera;
@@ -24,7 +26,7 @@ public class MainScene extends BaseScene {
     private CameraSetter cameraSetter;
 
     public enum Layer {
-        bg1, CelestialBody, bullet, ship, gib, bg2, ui, controller, COUNT
+        bg1, CelestialBody, bullet, ship, gib, bg2, ui, touch, controller, COUNT
     }
 //    bg1
 //      이 레이어의 0번은 camera 여야함.
@@ -71,16 +73,25 @@ public class MainScene extends BaseScene {
         add(Layer.bg2,cameraSetter);
 
 //        ui,
+//        touch,
+        add(Layer.touch, new AnalogStick(1000.0f, 7000.0f, 3000.0f, new AnalogStick.Callback() {
+            @Override
+            public boolean onTouch(float radian) {
+                Log.d(TAG, "AnalogStick. radian = "+ radian);
+//                player.slide(action == Button.Action.pressed);
+                return true;
+            }
+        }));
 //        controller,
         add(Layer.controller, new CollisionChecker());
 
 //        COUNT
     }
-    public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
+//    public boolean onTouchEvent(MotionEvent event) {
+//        int action = event.getAction();
+//        switch (action) {
+//            case MotionEvent.ACTION_DOWN:
+//            case MotionEvent.ACTION_MOVE:
 //                스틱을 터치해서 스틱의 각을 정한다.
 //                스틱과 플레이어의 radian이 같으면 가속을 한다.
 //                다르면 플레이어의 각을 스틱의 각으로 회전한다.
@@ -88,8 +99,12 @@ public class MainScene extends BaseScene {
 //                float x = Metrics.toGameX(event.getX());
 //                float y = Metrics.toGameY(event.getY());
 //                fighter.setTargetPosition(x, y);
-                return true;
-        }
-        return super.onTouchEvent(event);
+//                return true;
+//        }
+//        return super.onTouchEvent(event);
+//    }
+    @Override
+    protected int getTouchLayerIndex() {
+        return Layer.touch.ordinal();
     }
 }
