@@ -60,7 +60,7 @@ public class CameraSetter implements IGameObject{
             new_X = (player.getX() + enemy.getX()) / 2;
             new_Y = (player.getY() + enemy.getY()) / 2;
 
-            float cameraPadding = Math.max(player.getSize(), enemy.getSize());
+            float cameraPadding = Math.max(player.getSize(), enemy.getSize())*2;
 
 //            떨어진 거리와 화면 비율을 계산해 scale을 정한다.
             float dist_X = Math.abs(player.getX() - enemy.getX()) + cameraPadding;
@@ -85,9 +85,9 @@ public class CameraSetter implements IGameObject{
                 }
                 if(dist_Y > Metrics.game_height / SCALE_LIMIT) {
                     if(player.getY() > enemy.getY()){
-                        new_Y = player.getY() - (Metrics.game_height / SCALE_LIMIT) / 2 + player.getSize() / 2;
+                        new_Y = player.getY() - (Metrics.game_height / SCALE_LIMIT) / 2 + cameraPadding / 2;
                     }else{
-                        new_Y = player.getY() + (Metrics.game_height / SCALE_LIMIT) / 2 - player.getSize() / 2;
+                        new_Y = player.getY() + (Metrics.game_height / SCALE_LIMIT) / 2 - cameraPadding / 2;
                     }
                 }
             }else if(new_scale > MAX_SCALE ) {  // 반대의 경우도 제한해야한다.
