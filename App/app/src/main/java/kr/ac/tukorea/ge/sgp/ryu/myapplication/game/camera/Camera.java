@@ -10,7 +10,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 public class Camera implements IGameObject {
     private float current_X, current_Y, target_X, target_Y;
     private float current_scale, target_scale;
-    private final float EPSILON = 0.1f;
+    private final float EPSILON = 0.0001f;
     private final float RATIO = 1f;
 
     public Camera(){
