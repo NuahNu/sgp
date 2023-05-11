@@ -24,17 +24,20 @@ public class Boss extends Ship {
                 R.mipmap.boss_2,
         };
         phase = 0;
-        // 기체 제원
         mass = 1;
-        enginePower = 5;
         name = String.valueOf(R.string.boss_name);
         className = String.valueOf(R.string.flagShip);
-        ownHP = new HP(R.mipmap.kestral_shields, cx, cy,610,680);
+        ownHP = new HP(R.mipmap.kestral_shields, x, y,610,680);
         ownHP.setHP(100,300);
         // 보스용 실드 이미지 구해야함.
-//        addImpulse(new Vector2D(1000,0));
 
     }
+
+    @Override
+    protected void initStatus() {
+        enginePower = 500;
+    }
+
     private void changePhase(){
         if(phase > 2) return;
         weaponList.set(phase, null);

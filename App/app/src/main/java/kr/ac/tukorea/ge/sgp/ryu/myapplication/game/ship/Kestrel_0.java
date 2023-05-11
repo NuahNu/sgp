@@ -17,16 +17,17 @@ public class Kestrel_0 extends Ship {
     public Kestrel_0(float cx, float cy) {
         super(R.mipmap.kestrel_0, cx, cy, kestral_width, kestral_height);
         // 기체 제원
-        maxSpeed = 5;
         mass = 1;
         // PhysicalObject의 acceleration에 엔진 파워 적용.
-        acceleration = enginePower = 5;
         name = String.valueOf(R.string.kestrel_0_name);
         className = String.valueOf(R.string.cruiser);
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,800,503);
         ownHP.setHP(50,100);
     }
-
+    @Override
+    protected void initStatus() {
+        enginePower = 500;
+    }
     @Override
     protected void initWeapon() {
         weaponList.add(new Laser(this, true));

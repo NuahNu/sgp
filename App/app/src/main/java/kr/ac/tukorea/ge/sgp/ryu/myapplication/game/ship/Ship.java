@@ -37,10 +37,10 @@ public class Ship extends PhysicalObject {
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
         super(bitmapResId, cx, cy, width, height);
 
-
         initWeapon();
         initFacility();
         initWeaponLocation();
+        initStatus();
         renewalMassStatus();
         // 나중에 Facility 중 weaponSystem으로 확인하도록 변경.
         weaponPowered = true;
@@ -49,6 +49,8 @@ public class Ship extends PhysicalObject {
         radian = 0;
         engineFlag = false;
     }
+
+    protected void initStatus() {}
 
     protected void initWeapon() {}
 
@@ -69,8 +71,9 @@ public class Ship extends PhysicalObject {
                 continue;
             mass += f.getMass();
         }
-        // 최대 속도 갱신
-        maxSpeed = enginePower* 2;
+        acceleration = enginePower;
+        // 최대 속도
+        maxSpeed = enginePower * 2;
         // 선회율 갱신
         turnRate = (float) Math.toRadians(180);
 

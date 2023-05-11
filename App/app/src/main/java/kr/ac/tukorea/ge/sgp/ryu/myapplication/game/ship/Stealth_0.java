@@ -15,13 +15,16 @@ public class Stealth_0 extends Ship {
     public Stealth_0(float cx, float cy) {
         super(R.mipmap.stealth_0, cx, cy, stealth_width, stealth_height);
         // 기체 제원
-        maxSpeed = 5;
         mass = 1;
-        enginePower = 5;
         name = String.valueOf(R.string.stealth_0_name);
         className = String.valueOf(R.string.corvette);
         ownHP = new HP(R.mipmap.kestral_shields, cx, cy,800,562);
         ownHP.setHP(30, 200);
+    }
+
+    @Override
+    protected void initStatus() {
+        enginePower = 500;
     }
 
     @Override

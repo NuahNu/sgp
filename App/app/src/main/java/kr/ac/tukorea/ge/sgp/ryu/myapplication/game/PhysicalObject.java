@@ -52,20 +52,20 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
         // 감속
         if(speed.getLength() > maxSpeed) { // 속도제한보다 크면
             delta = new Vector2D(speed);
-            delta.multiply(-(acceleration / mass) / delta.getLength() * DECELERATION_RATE);
+            delta.multiply(-(acceleration) / delta.getLength() * DECELERATION_RATE);
             delta.multiply(frameTime);
             speed.add(delta);
             if(speed.getLength() < maxSpeed){ // 더 낮아지면 안된다.
                 speed.multiply(maxSpeed/speed.getLength());
             }
+
+//            Vector2D tmp = new Vector2D(Math.cos(radian),Math.sin(radian));
+//            tmp.multiply(-mass * acceleration * frameTime); // 가속도는 frameTime 곱해주고
+//            this.addImpulse(tmp);
         }
     }
 
     public void addImpulse(Vector2D impulse){
-//        impulse.multiply(frameTime);  // 버그나면 이게 문제
-//        생각해보니 위치 갱신에서 speed에 frameTime을 곱하니까
-//        그냥 더하는게 맞는듯
-
         speed.multiply(mass);
         speed.add(impulse);
         speed.multiply(1/ mass);
