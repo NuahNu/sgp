@@ -12,7 +12,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
-public class Projectile extends AnimSprite implements IBoxCollidable {
+public class Projectile extends AnimSprite implements IBoxCollidable , IProjectile{
     // 수명도 추가해야함.
 
     // 무기로부터 받는다.
@@ -89,5 +89,10 @@ public class Projectile extends AnimSprite implements IBoxCollidable {
         speed.multiply(mass);
         speed.add(impulse);
         speed.multiply(1/ mass);
+    }
+
+    @Override
+    public float getDamage() {
+        return damage;
     }
 }

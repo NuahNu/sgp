@@ -28,6 +28,9 @@ public class Weapon extends Sprite implements IPartOfShip {
     protected Rect[] rects = null;      // 그릴 이미지의 위치.
 
     // 데미지
+    protected float damage;
+    private float radian;
+
     // 사거리
     // 투사체 옵션
     // 발사체 속도
@@ -77,6 +80,7 @@ public class Weapon extends Sprite implements IPartOfShip {
         canvas.save();
         canvas.rotate((float) Math.toDegrees( Math.toRadians(90)), x, y);       // 비행기랑 무기랑 이미지 각도가 다름.
         canvas.rotate((float) Math.toDegrees( owner.getRadian()), x, y);
+        this.radian = owner.getRadian();
 //        canvas.translate((float) weaponLocation.y, (float) -weaponLocation.x);  // 90도 회전 때문에 좌표계가 다름.
         canvas.drawBitmap(bitmap, srcRect, dstRect, null);
         canvas.restore();
@@ -153,4 +157,7 @@ public class Weapon extends Sprite implements IPartOfShip {
         dstRect.set(x - half_width, y, x + half_width, y + height);
     }
 
+    public float getDamage(){ return damage; }
+
+    public float getRadian() { return radian; }
 }
