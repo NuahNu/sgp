@@ -5,6 +5,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Beam_Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Laser;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
@@ -32,7 +33,8 @@ public class Kestrel_0 extends Ship {
     protected void initWeapon() {
         weaponList.add(new Laser(this, true));
         weaponList.add(new Laser(this, false));
-        weaponList.add(new Laser(this, true));
+//        weaponList.add(new Laser(this, true));
+        weaponList.add(new Beam_Weapon(this, true));
         weaponList.add(new Laser(this, false));
     }
     protected void initWeaponLocation() {

@@ -31,13 +31,13 @@ public class Boss_Beam extends Weapon {
                 new Rect(  231, 0,   231+ 33,  65),
         };
         maxBulletStock = 1;
-        coolTime = 5;
+        coolTime = 1;
         firingTime = 3;
         reloadingSprite = 7;
         firingSprite = 6;
     }
     @Override
     protected void makeProjectile() {
-        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Beam(R.mipmap.beam_red,this, firingTime, true));
+        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Beam(R.mipmap.beam_red,this, firingTime, true, 9));
     }
 }

@@ -6,6 +6,7 @@ import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.res.BitmapPool;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 
 public class Sprite implements IGameObject {
     protected Bitmap bitmap;
@@ -57,4 +58,6 @@ public class Sprite implements IGameObject {
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, null, dstRect, null);
     }
+
+    public Vector2D getSize(){ return new Vector2D(width, height); }
 }

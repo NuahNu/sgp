@@ -22,8 +22,8 @@ public class Beam extends Sprite implements IProjectile{
     private Rect srcRect = new Rect();;
     private Weapon owner;
 
-    public Beam(int bitmapResId, Weapon owner, float firingTime,boolean flag) {
-        super(bitmapResId,0,0,9000,9);
+    public Beam(int bitmapResId, Weapon owner, float firingTime,boolean flag, float thickness) {
+        super(bitmapResId,0,0,9000,thickness);
 
         rects = new Rect[] {
                 new Rect(  0,   0,   0 + 9,  9),

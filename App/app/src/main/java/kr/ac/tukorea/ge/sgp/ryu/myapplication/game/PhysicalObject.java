@@ -98,6 +98,6 @@ public class PhysicalObject extends Sprite implements IBoxCollidable {
         return speed;
     }
 
-    public float getSize(){ return Math.max(width,height); }
+    public float getBiggerSize(){ return Math.max(width,height); }
 
 }

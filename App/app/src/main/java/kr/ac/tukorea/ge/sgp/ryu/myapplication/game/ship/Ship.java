@@ -147,7 +147,7 @@ public class Ship extends PhysicalObject {
             {
                 weaponArmLength = maxWeaponArmLength;
                 // test code
-                weaponPowered = false;
+//                weaponPowered = false;
             }
         }
         else {
@@ -157,7 +157,7 @@ public class Ship extends PhysicalObject {
             {
                 weaponArmLength = 0;
                 //test code
-                weaponPowered = true;
+//                weaponPowered = true;
             }
         }
     }
