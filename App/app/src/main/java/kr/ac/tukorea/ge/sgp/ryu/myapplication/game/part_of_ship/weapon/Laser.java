@@ -43,6 +43,6 @@ public class Laser extends Weapon{
 
     @Override
     protected void makeProjectile() {
-        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Bullet(R.mipmap.laser_heavy_strip4,x,y,this));
+        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Bullet(R.mipmap.laser_light_strip4,x,y,this));
     }
 }
