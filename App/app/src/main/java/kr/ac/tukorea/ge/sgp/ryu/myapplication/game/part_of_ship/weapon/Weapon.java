@@ -15,7 +15,7 @@ public class Weapon extends Sprite implements IPartOfShip {
     protected float mass;
 
     protected int projectileType; // 0 = 물리, 1 = 에너지 enum?
-    protected static Rect srcRect = new Rect();
+    protected Rect srcRect = new Rect();
     protected int maxBulletStock;          // 저장 가능한 탄환 수
     protected int currentBulletStock;      // 현재 준비된(발사 가능한) 탄환 수
     protected boolean isFiring;
@@ -127,8 +127,7 @@ public class Weapon extends Sprite implements IPartOfShip {
         else
             if(remainingTime < coolTime) {
                 remainingTime += BaseScene.frameTime;
-                if(remainingTime > coolTime)
-                {
+                if(remainingTime > coolTime) {
                     remainingTime -= coolTime;
                     if(updateBulletStock()){
                         remainingTime = coolTime;
