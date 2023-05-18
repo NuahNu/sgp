@@ -24,6 +24,7 @@ public class Boss_Missile extends Weapon {
         firingTime = 0.25f;
         reloadingSprite = 2;
         firingSprite = 1;
+        projectileType = 0;
     }
     @Override
     protected void makeProjectile() {

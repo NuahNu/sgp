@@ -14,6 +14,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 public class Beam extends Sprite implements IProjectile{
     private static final int NUM_OF_SPRITE = 5;
     private static final float TIME_LAG = 0.2f;
+    private int projectileType;
     private float damage;
     private boolean flag;
     private float maxLifeTime;
@@ -36,7 +37,7 @@ public class Beam extends Sprite implements IProjectile{
         this.flag = flag;
         this.maxLifeTime = firingTime;
         damage = owner.getDamage();
-
+        projectileType = owner.getProjectileType();
     }
 
     private void selectRect() {
@@ -91,7 +92,9 @@ public class Beam extends Sprite implements IProjectile{
 
     @Override
     public float getDamage() {
-
-        return 0;
+        return damage;
     }
+
+    @Override
+    public int getProjectileType() { return projectileType; }
 }

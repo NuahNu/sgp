@@ -29,6 +29,7 @@ public class Boss_Ion extends Weapon {
         firingTime = 0.25f;
         reloadingSprite = 5;
         firingSprite = 3;
+        projectileType = 1;
     }
     @Override
     protected void makeProjectile() {

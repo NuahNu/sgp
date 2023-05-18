@@ -159,4 +159,6 @@ public class Weapon extends Sprite implements IPartOfShip {
     public float getDamage(){ return damage; }
 
     public float getRadian() { return radian; }
+
+    public int getProjectileType() { return projectileType; }
 }

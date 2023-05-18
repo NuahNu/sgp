@@ -31,6 +31,7 @@ public class Boss_Laser extends Weapon{
         firingTime = 0.25f;
         reloadingSprite = 5;
         firingSprite = 7;
+        projectileType = 0;
     }
     @Override
     protected void makeProjectile() {

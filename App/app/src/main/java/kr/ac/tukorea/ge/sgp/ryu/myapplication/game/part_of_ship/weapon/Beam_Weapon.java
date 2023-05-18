@@ -33,6 +33,7 @@ public class Beam_Weapon extends Weapon {
         firingTime = 3;
         reloadingSprite = 2;
         firingSprite = 8;
+        projectileType = 1;
     }
     @Override
     protected void makeProjectile() {

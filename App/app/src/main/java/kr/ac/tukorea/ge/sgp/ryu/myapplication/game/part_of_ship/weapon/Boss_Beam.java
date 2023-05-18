@@ -35,6 +35,7 @@ public class Boss_Beam extends Weapon {
         firingTime = 3;
         reloadingSprite = 7;
         firingSprite = 6;
+        projectileType = 1;
     }
     @Override
     protected void makeProjectile() {

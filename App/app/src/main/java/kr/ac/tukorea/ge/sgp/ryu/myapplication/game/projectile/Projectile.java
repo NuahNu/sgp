@@ -29,6 +29,7 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
     public Projectile(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount, Weapon owner) {
         super(bitmapResId, cx, cy, width, height, fps, frameCount);
         radian = owner.getOwner().getRadian();
+        projectileType = owner.getProjectileType();
     }
 
     protected void setSpeed(Ship owner) {
@@ -95,4 +96,7 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
     public float getDamage() {
         return damage;
     }
+
+    @Override
+    public int getProjectileType() { return projectileType; }
 }
