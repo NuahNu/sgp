@@ -40,6 +40,7 @@ public class Laser extends Weapon{
         reloadingSprite = 5;
         firingSprite = 7;
         projectileType = 0;
+        damage = 5;
     }
 
     @Override

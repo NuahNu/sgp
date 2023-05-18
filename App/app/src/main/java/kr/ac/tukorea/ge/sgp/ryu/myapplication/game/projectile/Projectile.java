@@ -18,7 +18,7 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
 
     // 무기로부터 받는다.
     protected int projectileType; // 0 = 물리, 1 = 에너지 enum?
-    protected int damage;
+    protected float damage;
     protected int hp;               // 충돌시 죽냐 안 죽냐 판가름용.
     protected float radian;           // 각
     //------------------------
@@ -33,6 +33,7 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
         radian = owner.getOwner().getRadian();
         projectileType = owner.getProjectileType();
         team = owner.getTeam();
+        damage = owner.getDamage();
     }
 
     protected void setSpeed(Ship owner) {

@@ -26,12 +26,13 @@ public class Boss_Laser extends Weapon{
                 new Rect(  330, 0,   330+ 33,  65),
                 new Rect(  363, 0,   363+ 33,  65),
         };
-        maxBulletStock = 3;
-        coolTime = 3;
-        firingTime = 0.25f;
+        maxBulletStock = 8;
+        coolTime = 0.5f;
+        firingTime = 0.125f;
         reloadingSprite = 5;
         firingSprite = 7;
         projectileType = 0;
+        damage = 1;
     }
     @Override
     protected void makeProjectile() {

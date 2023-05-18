@@ -41,6 +41,7 @@ public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
         damage = owner.getDamage();
         projectileType = owner.getProjectileType();
         team = owner.getTeam();
+        damage = owner.getDamage();
     }
 
     private void selectRect() {
