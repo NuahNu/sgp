@@ -21,15 +21,18 @@ public class PlayerData {
         initShipList();
     }
 
-    private static void initShipList(){
+    public static void initShipList(){
         if(shipList == null){
             shipList= new ArrayList<> ();
 
             Ship tmp = new Kestrel_0(game_width/2, game_height/2);
+            tmp.setTeam(0);
             shipList.add(tmp);
             tmp = new Stealth_0(game_width/2, game_height/2);
+            tmp.setTeam(0);
             shipList.add(tmp);
             tmp = new Boss(game_width/2, game_height/2);
+            tmp.setTeam(0);
             shipList.add(tmp);
         }
     }
@@ -38,10 +41,13 @@ public class PlayerData {
         shipList= new ArrayList<> ();
 
         Ship tmp = new Kestrel_0(game_width/2, game_height/2);
+        tmp.setTeam(0);
         shipList.add(tmp);
         tmp = new Stealth_0(game_width/2, game_height/2);
+        tmp.setTeam(0);
         shipList.add(tmp);
         tmp = new Boss(game_width/2, game_height/2);
+        tmp.setTeam(0);
         shipList.add(tmp);
     }
 

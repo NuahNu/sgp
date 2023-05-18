@@ -20,7 +20,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class MainScene extends BaseScene {
     private static final String TAG = MainScene.class.getSimpleName();
-    private final PlayerData playerData = new PlayerData();
+//    private final PlayerData playerData = new PlayerData();
     private Ship player;
     private Camera camera;
     private CameraSetter cameraSetter;
@@ -57,14 +57,17 @@ public class MainScene extends BaseScene {
         //---- 이 작업을 controller의 playerData가 하게 만든다?
         // playerData는 모든 Scene에서 접근 가능해야함.
         // BaseScene에 있는게 맞지 않을까?
-        ArrayList<Ship> shipList = playerData.getShips();
+        PlayerData.initShipList();
+        ArrayList<Ship> shipList = PlayerData.getShips();
         player = shipList.get(2); // K, S, B
         add(Layer.ship, player);
 //        player = shipList.get(1); // K, S, B
 //        add(Layer.ship, player);
 //        player = shipList.get(0); // K, S, B
 //        add(Layer.ship, player);
-        add(Layer.ship, new Kestrel_0(game_width/2, game_height/2));
+        Ship enemy = new Kestrel_0(game_width/4, game_height/2);
+        enemy.setTeam(1);
+        add(Layer.ship, enemy);
 
 //        gib,
 //        bg2,
