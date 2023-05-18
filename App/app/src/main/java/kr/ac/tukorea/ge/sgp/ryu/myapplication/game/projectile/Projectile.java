@@ -8,14 +8,15 @@ import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.AnimSprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Projectile extends AnimSprite implements IBoxCollidable , IProjectile, IDivisibleByTeam {
-    // 수명도 추가해야함.
-
+    protected float lifeTime = 3;
     // 무기로부터 받는다.
     protected int projectileType; // 0 = 물리, 1 = 에너지 enum?
     protected float damage;
@@ -47,6 +48,10 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
         UpdateLocation();
         fixDstRect();           // 위치 갱신
         fixCollisionRect();     // 충돌박스 갱신. dstRect를 기반으로 하므로 먼저 불려야함.
+        lifeTime -= frameTime;
+        if(lifeTime < 0){
+            BaseScene.getTopScene().remove(MainScene.Layer.bullet, this);
+        }
     }
 
     protected void fixCollisionRect() {
