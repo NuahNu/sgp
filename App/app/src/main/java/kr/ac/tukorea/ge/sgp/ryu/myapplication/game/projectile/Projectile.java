@@ -27,7 +27,7 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
     protected float mass;             // 질량의 합.
     protected Vector2D speed = new Vector2D(0,0);         // 속도.
     protected float BULLET_SPEED;
-    private int team;
+    protected int team;
 
     public Projectile(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount, Weapon owner) {
         super(bitmapResId, cx, cy, width, height, fps, frameCount);

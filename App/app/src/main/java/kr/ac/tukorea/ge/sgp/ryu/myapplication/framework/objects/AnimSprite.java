@@ -11,6 +11,7 @@ public class AnimSprite extends Sprite {
     protected int frameWidth, frameHeight;  // srcRect의 가로 세로
     public AnimSprite(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount) {
         super(bitmapResId, cx, cy, width, height);
+        if(fps == 0) return;
         this.fps = fps;
         int imageWidth = bitmap.getWidth();
         frameHeight = bitmap.getHeight();

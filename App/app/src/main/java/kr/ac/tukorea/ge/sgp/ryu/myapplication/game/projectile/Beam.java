@@ -4,29 +4,29 @@ import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.f
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 
-public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
+public class Beam extends Projectile implements IBoxCollidable, IProjectile, IDivisibleByTeam {
     private static final int NUM_OF_SPRITE = 5;
     private static final float TIME_LAG = 0.2f;
-    private int projectileType;
-    private float damage;
     private boolean flag;
     private float maxLifeTime;
     private float currentLifeTime;
     private Rect[] rects = null;
     private Rect srcRect = new Rect();;
     private Weapon owner;
-    private int team;
 
     public Beam(int bitmapResId, Weapon owner, float firingTime,boolean flag, float thickness) {
-        super(bitmapResId,0,0,9000,thickness);
+        super(bitmapResId,0,0,9000,thickness,0,0,owner);
 
         rects = new Rect[] {
                 new Rect(  0,   0,   0 + 9,  9),
@@ -35,6 +35,7 @@ public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
                 new Rect(  27,  0,   27+ 9,  9),
                 new Rect(  36,  0,   36+ 9,  9),
         };
+        mass = 0;
         this.owner = owner;
         this.flag = flag;
         this.maxLifeTime = firingTime;
@@ -71,6 +72,13 @@ public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
     @Override
     public void update() {
         selectRect();
+        if(flag){
+            x = owner.getX();
+            y = owner.getY();
+            fixDstRect();
+            fixCollisionRect();
+        }
+        radian = owner.getRadian();
         currentLifeTime += frameTime;
         if(currentLifeTime > maxLifeTime){
             BaseScene.getTopScene().remove(MainScene.Layer.bullet, this);
@@ -79,16 +87,12 @@ public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
 
     @Override
     public void draw(Canvas canvas) {
-        super.draw(canvas);
-        if(flag){
-            x = owner.getX();
-            y = owner.getY();
-            fixDstRect();
-        }
+//        super.draw(canvas);
+
 
         canvas.save();
 //        canvas.rotate((float) Math.toDegrees( Math.toRadians(90)), x, y);       // 비행기랑 무기랑 이미지 각도가 다름.
-        canvas.rotate((float) Math.toDegrees( owner.getRadian()), x, y);
+        canvas.rotate((float) Math.toDegrees( radian), x, y);
 //        canvas.translate((float) weaponLocation.y, (float) -weaponLocation.x);  // 90도 회전 때문에 좌표계가 다름.
         canvas.drawBitmap(bitmap, srcRect, dstRect, null);
         canvas.restore();
@@ -96,15 +100,6 @@ public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
 
     @Override
     public float getDamage() {
-        return damage;
+        return damage * frameTime;
     }
-
-    @Override
-    public int getProjectileType() { return projectileType; }
-
-    @Override
-    public int getTeam() { return team; }
-
-    @Override
-    public void setTeam(int team) { this.team = team; }
 }
