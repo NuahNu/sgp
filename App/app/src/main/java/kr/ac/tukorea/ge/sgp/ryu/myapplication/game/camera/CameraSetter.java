@@ -60,7 +60,7 @@ public class CameraSetter implements IGameObject{
             new_X = (player.getX() + enemy.getX()) / 2;
             new_Y = (player.getY() + enemy.getY()) / 2;
 
-            float cameraPadding = Math.max(player.getSize(), enemy.getSize());
+            float cameraPadding = Math.max(player.getBiggerSize(), enemy.getBiggerSize());
 
 //            떨어진 거리와 화면 비율을 계산해 scale을 정한다.
             float dist_X = Math.abs(player.getX() - enemy.getX()) + cameraPadding;
