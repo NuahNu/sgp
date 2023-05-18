@@ -8,11 +8,12 @@ import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.AnimSprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
-public class Projectile extends AnimSprite implements IBoxCollidable , IProjectile{
+public class Projectile extends AnimSprite implements IBoxCollidable , IProjectile, IDivisibleByTeam {
     // 수명도 추가해야함.
 
     // 무기로부터 받는다.
@@ -25,11 +26,13 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
     protected float mass;             // 질량의 합.
     protected Vector2D speed = new Vector2D(0,0);         // 속도.
     protected float BULLET_SPEED;
+    private int team;
 
     public Projectile(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount, Weapon owner) {
         super(bitmapResId, cx, cy, width, height, fps, frameCount);
         radian = owner.getOwner().getRadian();
         projectileType = owner.getProjectileType();
+        team = owner.getTeam();
     }
 
     protected void setSpeed(Ship owner) {
@@ -99,4 +102,10 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
 
     @Override
     public int getProjectileType() { return projectileType; }
+
+    @Override
+    public int getTeam() { return team; }
+
+    @Override
+    public void setTeam(int team) { this.team = team; }
 }

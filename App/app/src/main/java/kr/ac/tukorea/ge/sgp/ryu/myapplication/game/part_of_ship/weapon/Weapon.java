@@ -5,11 +5,12 @@ import android.graphics.Rect;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.IPartOfShip;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
-public class Weapon extends Sprite implements IPartOfShip {
+public class Weapon extends Sprite implements IPartOfShip, IDivisibleByTeam {
     // 4/19 수업에서 사용한 방법을 적용
     protected Ship owner;
     protected float mass;
@@ -30,6 +31,7 @@ public class Weapon extends Sprite implements IPartOfShip {
     // 데미지
     protected float damage;
     private float radian;
+    private int team;
 
     // 사거리
     // 투사체 옵션
@@ -46,6 +48,7 @@ public class Weapon extends Sprite implements IPartOfShip {
         this.owner = inputOwner;
         isFiring = false;
         remainingTime = 0;
+        team = owner.getTeam();
     }
 
     @Override
@@ -161,4 +164,10 @@ public class Weapon extends Sprite implements IPartOfShip {
     public float getRadian() { return radian; }
 
     public int getProjectileType() { return projectileType; }
+
+    @Override
+    public int getTeam() { return team; }
+
+    @Override
+    public void setTeam(int team) { this.team = team; }
 }

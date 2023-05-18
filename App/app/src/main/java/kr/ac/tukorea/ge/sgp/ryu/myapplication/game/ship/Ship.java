@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Button;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.AnalogStick;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.HP;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.facility.Facility;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.PhysicalObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.Vector2D;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 
-public class Ship extends PhysicalObject {
+public class Ship extends PhysicalObject implements IDivisibleByTeam {
     protected String name;
     protected String className;
     protected float shipMass;         // 비행기만의 질량.
@@ -32,6 +33,7 @@ public class Ship extends PhysicalObject {
     protected HP ownHP = null;
     private float targetRadian;
     private boolean engineFlag;
+    private int team;
 
     //---------------------------
     public Ship(int bitmapResId, float cx, float cy, float width, float height) {
@@ -227,4 +229,10 @@ public class Ship extends PhysicalObject {
                 break;
         }
     }
+
+    @Override
+    public int getTeam() { return team; }
+
+    @Override
+    public void setTeam(int team) { this.team = team; }
 }

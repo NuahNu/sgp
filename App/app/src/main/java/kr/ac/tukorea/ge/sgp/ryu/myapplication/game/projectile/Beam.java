@@ -8,10 +8,11 @@ import android.graphics.Rect;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.IDivisibleByTeam;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 
-public class Beam extends Sprite implements IProjectile{
+public class Beam extends Sprite implements IProjectile, IDivisibleByTeam {
     private static final int NUM_OF_SPRITE = 5;
     private static final float TIME_LAG = 0.2f;
     private int projectileType;
@@ -22,6 +23,7 @@ public class Beam extends Sprite implements IProjectile{
     private Rect[] rects = null;
     private Rect srcRect = new Rect();;
     private Weapon owner;
+    private int team;
 
     public Beam(int bitmapResId, Weapon owner, float firingTime,boolean flag, float thickness) {
         super(bitmapResId,0,0,9000,thickness);
@@ -38,6 +40,7 @@ public class Beam extends Sprite implements IProjectile{
         this.maxLifeTime = firingTime;
         damage = owner.getDamage();
         projectileType = owner.getProjectileType();
+        team = owner.getTeam();
     }
 
     private void selectRect() {
@@ -97,4 +100,10 @@ public class Beam extends Sprite implements IProjectile{
 
     @Override
     public int getProjectileType() { return projectileType; }
+
+    @Override
+    public int getTeam() { return team; }
+
+    @Override
+    public void setTeam(int team) { this.team = team; }
 }
