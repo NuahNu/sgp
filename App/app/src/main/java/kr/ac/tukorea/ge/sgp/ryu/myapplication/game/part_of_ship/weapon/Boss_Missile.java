@@ -7,6 +7,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.part_of_ship.weapon.Weapon;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.projectile.Bullet;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.projectile.Missile;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Boss;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
@@ -29,6 +30,6 @@ public class Boss_Missile extends Weapon {
     }
     @Override
     protected void makeProjectile() {
-        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Bullet(R.mipmap.laser_heavy_strip4,x,y,this));
+        BaseScene.getTopScene().add(MainScene.Layer.bullet, new Missile(R.mipmap.missile_1,x,y,this));
     }
 }

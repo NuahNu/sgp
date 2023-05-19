@@ -21,6 +21,7 @@ public class CollisionHelper {
     }
 
     // 중심점이 다른 경우 회전의 결과가 달라져 버그가 생길 수 있다.
+    // 이 함수를 사용할거면 중심점이 달라지면 안됨.
     public static boolean OBB (IBoxCollidable obj1, IBoxCollidable obj2) {
         RectF r1 = obj1.getCollisionRect();
         RectF r2 = obj2.getCollisionRect();
