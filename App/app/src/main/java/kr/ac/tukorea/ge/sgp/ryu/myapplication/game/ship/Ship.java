@@ -234,5 +234,13 @@ public class Ship extends PhysicalObject implements IDivisibleByTeam {
     public int getTeam() { return team; }
 
     @Override
-    public void setTeam(int team) { this.team = team; }
+    public void setTeam(int team) {
+        this.team = team;
+        for(Weapon w : weaponList) {
+            if(w == null) {
+                continue;
+            }
+            w.setTeam(team);
+        }
+    }
 }

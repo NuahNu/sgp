@@ -48,7 +48,6 @@ public class Weapon extends Sprite implements IPartOfShip, IDivisibleByTeam {
         this.owner = inputOwner;
         isFiring = false;
         remainingTime = 0;
-        team = owner.getTeam();
     }
 
     @Override
