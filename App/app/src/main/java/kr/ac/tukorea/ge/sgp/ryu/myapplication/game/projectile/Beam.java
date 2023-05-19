@@ -39,10 +39,6 @@ public class Beam extends Projectile implements IBoxCollidable, IProjectile, IDi
         this.owner = owner;
         this.flag = flag;
         this.maxLifeTime = firingTime;
-        damage = owner.getDamage();
-        projectileType = owner.getProjectileType();
-        team = owner.getTeam();
-        damage = owner.getDamage();
     }
 
     private void selectRect() {
