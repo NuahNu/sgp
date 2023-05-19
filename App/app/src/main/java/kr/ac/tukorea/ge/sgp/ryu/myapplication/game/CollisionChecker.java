@@ -28,7 +28,7 @@ public class CollisionChecker implements IGameObject {
             for (int si_2 = ships.size() - 1; si_2 >= 0; si_2--) {
                 Ship ship_2 = (Ship) ships.get(si_2);
                 if (ship_1 != ship_2 && CollisionHelper.OBB(ship_1, ship_2)) {
-                    Log.d(TAG, "Collision !!");
+//                    Log.d(TAG, "Collision !!");
                     break;
                 }
             }
@@ -39,6 +39,8 @@ public class CollisionChecker implements IGameObject {
             for (int pj = projectiles.size() - 1; pj >= 0; pj--) {
                 Projectile projectile = (Projectile) projectiles.get(pj);
                 if (ship.getTeam() != projectile.getTeam() && CollisionHelper.OBB(ship, projectile)) {
+                    ship.getDamage(projectile.getProjectileType(), projectile.getDamage());
+                    projectile.collisionWithShip();
                     Log.d(TAG, "Kaboom !!"+ship.getClass().getSimpleName()+", "+projectile.getClass().getSimpleName());
 //                    Log.d(TAG, "Kaboom !!"+ship.getTeam()+", "+projectile.getTeam());
                 }

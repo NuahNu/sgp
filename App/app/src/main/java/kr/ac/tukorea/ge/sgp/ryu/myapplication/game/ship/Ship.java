@@ -198,7 +198,7 @@ public class Ship extends PhysicalObject implements IDivisibleByTeam {
             vec2.add(0,-weaponArmLength);
     }
 
-    public void getDamage(boolean damageType, float amount ) {
+    public void getDamage(int damageType, float amount ) {
         if (ownHP != null) {
             if( ownHP.getDamage(damageType, amount) ){
                 whenDeath();

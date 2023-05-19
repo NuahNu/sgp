@@ -41,9 +41,9 @@ public class HP extends Sprite implements IGameObject {
         shieldRecoveryRate = shield;
     }
 
-    public boolean getDamage(boolean damageType, float amount ){
+    public boolean getDamage(int damageType, float amount ){
         // 한 프레임에 데미지를 전부 기억해놨다가 update에서 전부 처리?
-        if(damageType){
+        if(damageType == 0){
             // 물리
             currentHull -= amount * 0.8;
             currentShield -= amount * 0.2;

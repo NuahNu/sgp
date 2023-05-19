@@ -59,13 +59,13 @@ public class MainScene extends BaseScene {
         // BaseScene에 있는게 맞지 않을까?
         PlayerData.initShipList();
         ArrayList<Ship> shipList = PlayerData.getShips();
-        player = shipList.get(2); // K, S, B
-        add(Layer.ship, player);
+//        player = shipList.get(2); // K, S, B
+//        add(Layer.ship, player);
 //        player = shipList.get(1); // K, S, B
 //        add(Layer.ship, player);
-//        player = shipList.get(0); // K, S, B
-//        add(Layer.ship, player);
-        Ship enemy = new Kestrel_0(game_width/4, game_height/2);
+        player = shipList.get(0); // K, S, B
+        add(Layer.ship, player);
+        Ship enemy = new Kestrel_0(game_width*2/5, game_height/2);
         enemy.setTeam(1);
         add(Layer.ship, enemy);
 

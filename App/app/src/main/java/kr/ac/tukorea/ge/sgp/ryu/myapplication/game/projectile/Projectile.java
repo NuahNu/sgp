@@ -114,4 +114,6 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
 
     @Override
     public void setTeam(int team) { this.team = team; }
+
+    public void collisionWithShip(){ BaseScene.getTopScene().remove(MainScene.Layer.bullet, this); }
 }

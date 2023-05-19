@@ -25,6 +25,9 @@ public class Beam extends Projectile implements IBoxCollidable, IProjectile, IDi
     private Rect srcRect = new Rect();;
     private Weapon owner;
 
+    private float maxLength;
+    private float currentLength;
+
     public Beam(int bitmapResId, Weapon owner, float firingTime,boolean flag, float thickness) {
         super(bitmapResId,0,0,9000,thickness,0,0,owner);
 
@@ -35,6 +38,7 @@ public class Beam extends Projectile implements IBoxCollidable, IProjectile, IDi
                 new Rect(  27,  0,   27+ 9,  9),
                 new Rect(  36,  0,   36+ 9,  9),
         };
+        maxLength = currentLength = 9000;
         mass = 0;
         this.owner = owner;
         this.flag = flag;
@@ -92,10 +96,17 @@ public class Beam extends Projectile implements IBoxCollidable, IProjectile, IDi
 //        canvas.translate((float) weaponLocation.y, (float) -weaponLocation.x);  // 90도 회전 때문에 좌표계가 다름.
         canvas.drawBitmap(bitmap, srcRect, dstRect, null);
         canvas.restore();
+
+        currentLength = maxLength;  // 그리고 나면 다시 길어짐.
     }
 
     @Override
     public float getDamage() {
         return damage * frameTime;
+    }
+
+    @Override
+    public void collisionWithShip() {
+        // 길이가 달라진다.
     }
 }
