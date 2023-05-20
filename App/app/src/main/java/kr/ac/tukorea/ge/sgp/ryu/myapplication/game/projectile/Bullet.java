@@ -8,7 +8,6 @@ public class Bullet extends Projectile{
     public Bullet(int bitmapResId, float cx, float cy, Weapon owner) {
         super(bitmapResId, cx, cy, 50, 20, 4, 4, owner);
         mass = 1;
-        BULLET_SPEED = 3000;
-        setSpeed(owner.getOwner());
+
     }
 }

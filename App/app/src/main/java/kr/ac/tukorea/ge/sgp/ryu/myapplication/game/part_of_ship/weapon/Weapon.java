@@ -30,6 +30,8 @@ public class Weapon extends Sprite implements IPartOfShip, IDivisibleByTeam {
 
     // 데미지
     protected float damage;
+    protected float bulletSpeed = 3000;
+    protected float bulletLifeTime = 2;
     private float radian;
     private int team;
 
@@ -163,6 +165,12 @@ public class Weapon extends Sprite implements IPartOfShip, IDivisibleByTeam {
     public float getRadian() { return radian; }
 
     public int getProjectileType() { return projectileType; }
+
+    public float getRange(){ return bulletLifeTime * bulletSpeed; }
+
+    public float getBulletLifeTime() { return bulletLifeTime;  }
+
+    public float getBulletSpeed() { return bulletSpeed; }
 
     @Override
     public int getTeam() { return team; }

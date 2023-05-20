@@ -35,6 +35,9 @@ public class Projectile extends AnimSprite implements IBoxCollidable , IProjecti
         projectileType = owner.getProjectileType();
         team = owner.getTeam();
         damage = owner.getDamage();
+        BULLET_SPEED = owner.getBulletSpeed();
+        lifeTime = owner.getBulletLifeTime();
+        setSpeed(owner.getOwner());
     }
 
     protected void setSpeed(Ship owner) {

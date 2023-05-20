@@ -15,13 +15,11 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Missile extends Projectile{
     float targetRadian;
-    private float turnRate = (float) Math.toRadians(180);   // 속도 반비례하도록
+    private float turnRate = (float) Math.toRadians(90);   // 속도 반비례하도록
 
     public Missile(int bitmapResId, float cx, float cy, Weapon owner) {
         super(bitmapResId, cx, cy, 32, 80, 1, 1, owner);
         mass = 1;
-        BULLET_SPEED = 1500;
-        setSpeed(owner.getOwner());
     }
 
     @Override
@@ -34,6 +32,17 @@ public class Missile extends Projectile{
 
     private void updateSpeed() {
         float length = (float) speed.getLength();
+        if(length > BULLET_SPEED){
+            length -= (BULLET_SPEED / 2) * frameTime;
+            if(length < BULLET_SPEED){
+                length = BULLET_SPEED;
+            }
+        }else {
+            length += (BULLET_SPEED / 2) * frameTime;
+            if(length > BULLET_SPEED){
+                length = BULLET_SPEED;
+            }
+        }
         speed.set(Math.cos(radian), Math.sin(radian));
         speed.multiply(length);
     }
