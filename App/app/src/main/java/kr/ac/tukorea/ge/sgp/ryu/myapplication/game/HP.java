@@ -9,6 +9,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Sprite;
 
 public class HP extends Sprite implements IGameObject {
+    private static final long RECOVER_COOL_TIME = 3 * 1000;
     private float maxHull;
     private float currentHull;
     private float maxShield;
@@ -18,6 +19,7 @@ public class HP extends Sprite implements IGameObject {
     private float hullRecoveryRate;
     private float shieldRecoveryRate;
     private static Paint shieldPaint;
+    private long lastDamagedTime;
 
 
     public HP(int bitmapResId, float cx, float cy, float width, float height) {
@@ -26,6 +28,7 @@ public class HP extends Sprite implements IGameObject {
         if(shieldPaint == null){
             shieldPaint = new Paint();
         }
+        lastDamagedTime = System.currentTimeMillis();
     }
 
     public void setHP(int hull, int shield){
@@ -36,13 +39,14 @@ public class HP extends Sprite implements IGameObject {
 
     public void setRecovery(int hull, int shield){
         hullRecovery = hull != 0;
-        shieldRecovery = hull != 0;
+        shieldRecovery = shield != 0;
         hullRecoveryRate = hull;
         shieldRecoveryRate = shield;
     }
 
     public boolean getDamage(int damageType, float amount ){
         // 한 프레임에 데미지를 전부 기억해놨다가 update에서 전부 처리?
+        lastDamagedTime = System.currentTimeMillis();
         if(damageType == 0){
             // 물리
             currentHull -= amount * 0.8;
@@ -65,9 +69,11 @@ public class HP extends Sprite implements IGameObject {
 
     @Override
     public void update() {
-        recovering();
+        long now = System.currentTimeMillis();
+        if(now - lastDamagedTime > RECOVER_COOL_TIME){
+            recovering();
+        }
         shieldPaint.setAlpha((int) (currentShield * 255 / maxShield));
-//        System.out.println("currentHull "+currentHull);
         fixDstRect();
     }
 
@@ -94,4 +100,7 @@ public class HP extends Sprite implements IGameObject {
         canvas.drawBitmap(bitmap, null, dstRect, shieldPaint);
     }
     public boolean shieldExist(){ return maxShield != 0; }
+
+    public float getHullRatio(){ return currentHull / maxHull; }
+    public float getShieldRatio(){ return currentShield / maxShield; }
 }
