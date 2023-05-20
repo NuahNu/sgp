@@ -9,11 +9,10 @@ import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.Camera;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.CameraSetter;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.Camera;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.CameraSetter;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Kestrel_0;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.HpBar;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.HpUI;
 
 public class MainScene extends BaseScene {
@@ -75,7 +74,8 @@ public class MainScene extends BaseScene {
         add(Layer.bg2,cameraSetter);
 
 //        ui,
-        hpUI = new HpUI(player);
+        hpUI = new HpUI();
+        hpUI.setPlayer(player);
         add(Layer.ui, hpUI);
 //        touch,
         add(Layer.touch, new AnalogStick(1000.0f, 7000.0f, 3000.0f, new AnalogStick.Callback() {
