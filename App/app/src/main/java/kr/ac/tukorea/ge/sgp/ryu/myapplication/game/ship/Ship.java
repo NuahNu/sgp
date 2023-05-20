@@ -243,4 +243,6 @@ public class Ship extends PhysicalObject implements IDivisibleByTeam {
             w.setTeam(team);
         }
     }
+
+    public HP getOwnHP(){ return ownHP; }
 }
