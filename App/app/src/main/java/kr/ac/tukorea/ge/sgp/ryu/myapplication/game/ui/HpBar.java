@@ -8,11 +8,12 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class HpBar extends Sprite{
     private Ship player;
-    GaugeBar hull = new GaugeBar(R.mipmap.hp, 11 * 10, 0, 385 * 10, 65 * 10);
-    GaugeBar shield = new GaugeBar(R.mipmap.shield, 11 * 10, 0, 385 * 10, 65 * 10);
+    private static final float RATIO = 25;
+    GaugeBar hull = new GaugeBar(R.mipmap.hp, 11 * RATIO, 0, 359, 65, RATIO);
+    GaugeBar shield = new GaugeBar(R.mipmap.shield, 11 * RATIO, 0, 359, 65, RATIO);
 
     public HpBar(Ship player){
-        super(R.mipmap.hp_bar, 0, 0, 385 * 10, 65 * 10);
+        super(R.mipmap.hp_bar, 0, 0, 385 * RATIO, 65 * RATIO);
 
         this.player = player;
     }
