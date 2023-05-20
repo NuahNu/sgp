@@ -4,26 +4,23 @@ import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game
 import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics.game_width;
 
 import android.graphics.PointF;
-import android.util.Log;
-import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.R;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.objects.Button;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene;
-import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.Camera;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera.CameraSetter;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Kestrel_0;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.HpBar;
+import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui.HpUI;
 
 public class MainScene extends BaseScene {
     private static final String TAG = MainScene.class.getSimpleName();
 //    private final PlayerData playerData = new PlayerData();
     private static Ship player;
-    private HpBar hpBar;
+    private HpUI hpUI;
     private Camera camera;
     private CameraSetter cameraSetter;
 
@@ -78,8 +75,8 @@ public class MainScene extends BaseScene {
         add(Layer.bg2,cameraSetter);
 
 //        ui,
-        hpBar = new HpBar(player);
-        add(Layer.ui, hpBar);
+        hpUI = new HpUI(player);
+        add(Layer.ui, hpUI);
 //        touch,
         add(Layer.touch, new AnalogStick(1000.0f, 7000.0f, 3000.0f, new AnalogStick.Callback() {
             @Override
