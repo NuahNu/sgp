@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui;
 
 import static kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.scene.BaseScene.frameTime;
 

@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.camera;
+package kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ui;
 
 import android.graphics.Canvas;
 
@@ -10,34 +10,25 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.framework.view.Metrics;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.MainScene;
 import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
-public class CameraSetter implements IGameObject{
+public class CameraSetter extends UI {
     private final float MAX_SCALE = 10f;
     private final float SCALE_LIMIT = 3f;// 휴대폰마다 화면 크기가 다르니 이건 좀 수정해야함.
     private final float MIN_SCALE = 1f;
     private Camera camera;
-    private Ship player = null;
-    private Ship enemy = null;
 
 
     public CameraSetter(Camera camera){
         this.camera = camera;
     }
 
-    public void setPlayer(Ship input){
-        // 플레이어를 정해준다.
-        // 플레이어가 죽거나 변하는 등 계속 바뀔 예정이다.
-        this.player = input;
-    }
-
     @Override
     public void update() {
+        super.update();
         // ship들을 읽어와 위치와 배율을 정한다.
         // 목표 좌표를 바꿔준다.
         float new_X;
         float new_Y;
         float new_scale;
-
-        selectEnemy();
 
         if(player == null){
 //            플레이어가 없다 == 죽었다.  둘 다 없는 경우도 포함됨.
@@ -105,19 +96,6 @@ public class CameraSetter implements IGameObject{
         camera.setTarget_X(new_X);
         camera.setTarget_Y(new_Y);
         camera.setTarget_scale(new_scale);
-    }
-
-    private void selectEnemy() {
-        MainScene scene = (MainScene) BaseScene.getTopScene();
-        ArrayList<IGameObject> ships = scene.getObjectsAt(MainScene.Layer.ship);
-
-        for(IGameObject s : ships){
-            if (s != player){
-                enemy = (Ship) s;
-                return;
-            }
-        }
-        this.enemy = null;
     }
 
     @Override
