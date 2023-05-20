@@ -15,7 +15,7 @@ import kr.ac.tukorea.ge.sgp.ryu.myapplication.game.ship.Ship;
 
 public class Missile extends Projectile{
     float targetRadian;
-    private float turnRate = (float) Math.toRadians(180);;
+    private float turnRate = (float) Math.toRadians(180);   // 속도 반비례하도록
 
     public Missile(int bitmapResId, float cx, float cy, Weapon owner) {
         super(bitmapResId, cx, cy, 32, 80, 1, 1, owner);
