@@ -13,6 +13,7 @@ public class HpUI extends UI {
 
     public HpUI(){
         enemyHp = new HpBar(enemy, true);
+        playerHp = new HpBar(player, false);
     }
     @Override
     public void update() {
@@ -35,6 +36,6 @@ public class HpUI extends UI {
     @Override
     public void setPlayer(Ship input) {
         super.setPlayer(input);
-        playerHp = new HpBar(player, false);
+        playerHp.setShip(player);
     }
 }
